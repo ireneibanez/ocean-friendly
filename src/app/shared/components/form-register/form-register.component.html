@@ -1,0 +1,30 @@
+<form action="post" class="form" [formGroup]="form" (ngSubmit)="onSave()">
+    <button mat-dialog-close type="button" class="btn-close">X</button>
+    <h1>Regístrate</h1>
+    <div class="form__user-name">
+        <label for="name">Nombre de usuario</label>
+        <input type="text" name="name" placeholder="" formControlName="name" id="name">
+        <span *ngIf="form?.controls.name.errors?.required">Campo requerido</span>
+    </div>
+
+    <div class="form__email">
+        <label for="email">E-mail</label>
+        <input type="text" name="email" placeholder="" formControlName="email" id="email">
+        <span *ngIf="form?.controls.email.errors?.required">Campo requerido</span>
+        <span *ngIf="form?.controls.email.errors?.email">Email incorrecto</span>
+    </div>
+    <div class="form__password">
+        <label for="password">Contraseña</label>
+        <input type="text" name="password" placeholder="" formControlName="password" id="password">
+        <span *ngIf="form?.controls.password.errors?.required">Campo requerido</span>
+    </div>
+    <div class="form__repeat-password">
+        <label for="repeat">Confirma tu contraseña</label>
+        <input type="text" name="repeat" placeholder="" formControlName="repeat" id="repeat">
+        <span *ngIf="form?.controls.repeat.errors?.required">Campo requerido</span>
+    </div>
+    <div class="btn-container">
+        <button type="submit" class="btn-submit" [disabled]="!form.valid">Regístrate</button>
+    </div>
+</form>
+

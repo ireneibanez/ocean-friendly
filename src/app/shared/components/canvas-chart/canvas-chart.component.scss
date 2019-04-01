@@ -1,0 +1,52 @@
+
+@media screen and (min-width: 1201px) {
+  .group-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .chart-container {
+      height: 400px;
+      min-width: 750px;
+      margin: 32px;
+
+    }
+    p {
+      font-family: var(--ff-primary);
+      font-size: var(--fs-normal);
+      line-height: 1.5;
+      max-width: 500px;
+    }
+  }
+
+  .explication-tuna {
+  display: flex;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .group-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .chart-container {
+      height: 400px;
+      width: 100%;
+      margin: 40px;
+      &--inverse {
+        display: flex;
+        order: -1;
+      }
+    }
+
+    p {
+      font-family: var(--ff-primary);
+      font-size: var(--fs-normal);
+      line-height: 1.5;
+      min-width: 300px;;
+    }
+  }
+
+
+}

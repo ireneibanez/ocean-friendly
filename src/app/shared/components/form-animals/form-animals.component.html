@@ -1,0 +1,46 @@
+<form action="post" class="form-animals" [formGroup]="form" (ngSubmit)="onSaveAnimals()">
+  <button mat-dialog-close type="button" class="btn-close">X</button>
+  <h1>Registra tu avistamiento</h1>
+  <select name="name" id="spp-found" class="form-animals__spp">
+      <option value="select">Selecciona la especie encontrada</option>
+      <option value="whale">Ballena</option>
+      <option value="turtle">Tortuga</option>
+      <option value="tuna">Atún</option>
+  </select>
+  <div class="form-animals__number">
+      <label for="number">Número de individuos</label>
+      <input type="text" name="number" placeholder="" formControlName="number" id="number">
+      <span *ngIf="form?.controls.number.errors?.required">Campo requerido</span>
+  </div>
+  <div class="form-animals__status">
+      <label for="status">Estado</label>
+      <input type="text" name="status" placeholder="" formControlName="status" id="status">
+      <span *ngIf="form?.controls.status.errors?.required">Campo requerido</span>
+  </div>
+  <div class="form-animals__date">
+    <label for="date">Fecha</label>
+    <input type="date" name="date" placeholder="" formControlName="date" id="date">
+    <span *ngIf="form?.controls.date.errors?.required">Campo requerido</span>
+  </div>
+
+  <h2>Localización</h2>
+  <div class="form-animals__latitud">
+      <label for="latitud">Latitud</label>
+      <input type="text" name="latitud" placeholder="" formControlName="latitud" id="spp-latitud">
+  </div>
+  <div class="form-animals__longitud">
+      <label for="longitud">Longitud</label>
+      <input type="text" name="longitud" placeholder="" formControlName="longitud" id="spp-longitud">
+  </div>
+  <div class="form-animals__map">
+      <label for="spp-map">Haz click en el mapa en la zona donde encontraste la especie descrita</label>
+      <div id="map-form" name="map" formControlname="map" class="map-form"></div>
+  </div>
+  <div class="form-animals__picture">
+      <label for="picture">Adjuntar imagen (opcional)</label>
+      <input type="file" name="picture" placeholder="" formControlName="picture" id="spp-pictures">
+  </div>
+  <div class="btn-container">
+      <button type="button" class="btn-submit" [disabled]="!form.valid">Enviar</button>
+  </div>
+</form>

@@ -1,0 +1,16 @@
+
+
+.canvas-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 100px;
+}
+
+@media screen and (max-width: 1200px) {
+  .canvas-chart-container {
+    padding: 50px;
+    margin: 20px 0;
+  }
+}

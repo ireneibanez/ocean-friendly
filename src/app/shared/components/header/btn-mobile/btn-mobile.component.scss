@@ -1,0 +1,43 @@
+@import "../../../../../scss/partials/variables";
+@import "../../../../../scss/partials/mixins";
+
+@media screen and (min-width: 769px) {
+
+  .navigation__btn {
+    display: none;
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .navigation__btn {
+    margin: 20px, 0, 10px, 10px;
+    background-color: transparent;
+    border: 0;
+    user-select: none;
+    &:focus + img + nav {
+      transform: translate3d(0, 0, 0);
+        position: absolute;
+        z-index: map-get($z-index, 'mobile-menu');
+    }
+
+    span:not(.sr-only) {
+      display: block;
+      width: 1.75rem;
+      height: 0.1875rem;
+      background-color: var(--color-purple-3);
+    }
+
+    span+span {
+      margin-top: 0.3125rem;
+    }
+
+    .sr-only {
+      position: absolute;
+      text-indent: -9999rem;
+    }
+  }
+
+}

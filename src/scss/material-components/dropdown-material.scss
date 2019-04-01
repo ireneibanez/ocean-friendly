@@ -1,0 +1,24 @@
+
+.mat-menu-content {
+  position: fixed;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-purple-2);
+  border-radius: 2px;
+  top: 56px;
+  right: 13px;
+  padding-top: -8px;
+  padding-bottom: -8px;
+}
+
+.mat-button.mat-primary .mat-button-focus-overlay {
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+}
+
+.mat-menu-panel > .mat-menu-content:not(:empty) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+

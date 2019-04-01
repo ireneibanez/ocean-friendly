@@ -1,0 +1,48 @@
+:root {
+--color-blue-base: rgba(185, 231, 233, 1);	// main blue color
+--color-blue-1: rgba(228, 249, 250, 1);
+--color-blue-2: rgba(136, 203, 206, 1);
+--color-blue-3: rgba(87, 163, 166, 1);
+
+--color-purple-base: rgba(193, 205, 237, 1);	// main purple color
+--color-purple-1: rgba(231, 237, 251, 1);
+--color-purple-2: rgba(149, 168, 214, 1);
+--color-purple-3: rgba(104, 126, 181, 1);
+
+--color-green-base: rgba(193, 243, 196, 1);	// main green color
+--color-green-1: rgba(231, 252, 232, 1);
+--color-green-2: rgba(151, 228, 156, 1);
+--color-green-3: rgba(108, 207, 114, 1);
+
+--color-orange-base: rgba(255, 227, 202, 1);	// main orange color
+--color-orange-1: rgba(255, 243, 233, 1);
+--color-orange-2: rgba(255, 208, 168, 1);
+--color-orange-3: rgba(255, 189, 133, 1);
+
+--color-white: rgba(255, 255, 255, 1);
+--color-black: rgba(0, 0, 0, 1);
+--color-grey: rgba(130, 130, 130, 1);
+--color-graphite: rgba(071, 074, 081, 1);
+--color-red: rgba(255, 0, 0, 0.7);
+
+
+--fs-big: 20px;
+--fs-medium: 16px;
+--fs-small: 14px;
+--fs-tiny: 12px;
+
+--ff-primary: 'Open Sans', sans-serif;
+--ff-secondary: 'Raleway', sans-serif;
+}
+
+$modal: 300;
+
+$z-index: (
+  'header': 400,
+  'mobile-menu': 300,
+  'button': 200,
+  'modal': 100,
+  'tooltip': 50,
+  'default': 0,
+  'hidden': -1,
+)

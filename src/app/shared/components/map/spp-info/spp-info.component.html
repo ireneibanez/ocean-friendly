@@ -1,0 +1,25 @@
+
+<div class="modal__info-spps">
+  <button mat-dialog-close type="button" class="btn-close">X</button>
+  <h1>{{sppName}}</h1>
+  <div class="modal__info-spss__place">
+    <h2>Lugar del último avistamento:</h2>
+    <p>{{place}}</p>
+  </div>
+  <div class="modal__info-spss__weight">
+    <h2>Peso:</h2>
+    <p>{{weigth}}</p>
+  </div>
+  <div class="modal__info-spss__marks">
+    <h2>Marcas:</h2>
+    <p>{{marks}}</p>
+  </div>
+  <div class="modal__info-spss__additional-data">
+    <h2>Otros datos de interés:</h2>
+    <p>{{status}}</p>
+  </div>
+  <div *ngIf="picture" class="picture-container">
+    <img src="{{ picture }}" alt="Imagen">
+  </div>
+</div>
+

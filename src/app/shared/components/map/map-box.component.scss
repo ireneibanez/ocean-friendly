@@ -1,0 +1,92 @@
+@import "../../../../scss/partials/variables";
+@import "../../../../scss/partials/mixins";
+
+.map {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+
+  .marker {
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 50px;
+    cursor: pointer;
+  }
+  .mapboxgl-popup-content {
+    background-color: red;
+  }
+  // .tooltip {
+  //   background-color: var(--color-orange-2);
+  //   color: var(--color-purple-3);
+  // }
+  .turtle {
+    background-image: url('/assets/images/icons/turtle.svg');
+  }
+  .tuna {
+    background-image: url('/assets/images/icons/tuna.svg');
+  }
+  .whale {
+    background-image: url('/assets/images/icons/whale.svg');
+  }
+  .turtle-love {
+      background-image: url('/assets/images/icons/turtle-love.svg');
+  }
+  .tuna-love {
+      background-image: url('/assets/images/icons/tuna-love.svg');
+  }
+  .whale-love {
+      background-image: url('/assets/images/icons/whale-love.svg');
+  }
+  .turtle-star {
+    background-image: url('/assets/images/icons/turtle-star.svg');
+  }
+  .tuna-star {
+    background-image: url('/assets/images/icons/tuna-star.svg');
+  }
+  .whale-star {
+    background-image: url('/assets/images/icons/whale-star.svg');
+  }
+
+}
+
+.btn-find {
+  @include button;
+  position: fixed;
+  z-index: map-get($z-index, 'button');
+  top: 100px;
+  right: 15px;
+  cursor: pointer;
+  border: 0;
+}
+
+.marker:hover .tooltip-text {
+  visibility: visible;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 100%;
+  background-color: var(--color-white);
+  color: var(--color-purple-3);
+  text-align: center;
+  border: 1px solid var(--color-purple-3);
+  border-radius: 5px;
+  padding: 12px;
+  position: absolute;
+  left: 50%;
+  margin-left: -60px;
+  margin-top: -30px;
+}
+
+.tooltip-text::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-white) transparent transparent transparent;
+}
+

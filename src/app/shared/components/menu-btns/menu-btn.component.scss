@@ -1,0 +1,237 @@
+@import "../../../../scss/partials/variables";
+@import "../../../../scss/partials/mixins";
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+
+  .switch-title {
+      @include switch-title;
+
+  }
+
+  input[type=checkbox], input[type=radio] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+  }
+
+  label {
+      cursor: pointer;
+      text-indent: -9999px;
+      width: 50px;
+      height: 25px;
+      background: var(--color-white);
+      display: block;
+      border-radius: 100px;
+      position: relative;
+  }
+
+  label:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: var(--color-orange-3);
+      border-radius: 20px;
+      transition: 0.3s;
+  }
+
+  input:checked+label {
+      background: var(--color-orange-3);
+  }
+
+  input:checked+label:after {
+      left: calc(100% - 2px);
+      transform: translateX(-100%);
+      background: var(--color-white);
+  }
+
+}
+
+
+
+@media screen and (min-width: 769px) {
+  .map-options {
+    background-color: transparent;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    z-index: map-get($z-index, 'button');
+    bottom: 100px;
+    left: 15px;
+    cursor: pointer;
+    border: 0;
+    span {
+      display: none;
+    }
+    &-icon-open {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  // .map-options:focus+.map-options-menu {
+  //   transform: translate3d(0, 0, 0);
+  //   position: absolute;
+  // }
+
+  .map-options-menu {
+    position: fixed;
+    top: 25%;
+    bottom: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 12px 0 0;
+    padding: 32px;
+    z-index: map-get($z-index, 'mobile-menu');
+    background-color: var(--color-purple-3);
+    // transform: translate3d(-100%, 0, 0);
+    // transition: transform .25s ease-in-out;
+      .map-options-menu__container {
+        height: 100%;
+        width: 100%;
+        button {
+          position: absolute;
+          top: 16px;
+          left: 230px;
+          height: 50px;
+          width: 50px;
+          background-color: transparent;
+          border: 0;
+          .map-options-icon-down {
+            display: none;
+           }
+          .map-options-icon-close{
+            height: 50px;
+            width: 50px;
+          }
+
+        }
+        .map-options-menu__divider {
+          margin-top: 16px;
+          .map-options-title {
+            @include switch-title;
+            font-size: var(--fs-big);
+            font-weight: 600;
+            color: var(--color-white);
+          }
+          &--top-separate {
+            padding-top: 24px;
+            margin-bottom: 16px;
+          }
+          &--top-changed {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-white);
+          }
+        }
+      }
+    .switch-container {
+        margin: 24px 0;
+    }
+    .switch-title {
+        @include switch-title;
+        color: var(--color-white);
+    }
+  }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  .map-options {
+    @include button;
+    @include map-options;
+    height: 50px;
+    width: 100%;
+    background-color: var(--color-purple-3);
+    color: var(--color-white);
+    border-radius: 0;
+    font-weight: 600;
+    &-icon-open {
+      display: none;
+    }
+
+  }
+
+  // .map-options:focus+.map-options-menu {
+  //   transform: translate3d(0, 0, 0);
+  //   position: absolute;
+  // }
+
+  .map-options-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    z-index: map-get($z-index, 'mobile-menu');
+    background-color: var(--color-purple-3);
+    display: flex;
+    flex-direction: column;
+    // align-items: flex-start;
+    padding-top: 1.875rem;
+    // transform: translate3d(0, 100%, 0);
+    // transition: transform .25s ease-in-out;
+      .map-options-menu__container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        button {
+          position: absolute;
+          top: 72px;
+          right: 24px;;
+          height: 50px;
+          width: 50px;
+          background-color: transparent;
+          border: 0;
+          .map-options-icon-close{
+           display: none;
+          }
+          .map-options-icon-down {
+            height: 50px;
+            width: 50px;
+
+          }
+        }
+        .map-options-menu__divider {
+            display: flex;
+            flex-direction: column;
+            margin-top: 25px;
+            .map-options-title {
+                display: block;
+                margin-bottom: 50px;
+                @include switch-title;
+                font-size: var(--fs-big);
+                font-weight: 600;
+                color: var(--color-white);
+            }
+            &--top-separate {
+              padding-top: 25px;
+            }
+            &--top-changed {
+              margin-top: 40px;
+              padding-top: 24px;
+              border-top: 1px solid var(--color-white);
+            }
+        }
+
+    }
+    .switch-container {
+        margin: 16px 0;
+    }
+    .switch-title {
+        @include switch-title;
+        color: var(--color-white);
+    }
+  }
+}

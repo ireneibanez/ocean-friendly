@@ -1,0 +1,88 @@
+
+<mgl-map
+    class="map"
+    id="map"
+    [style]="'mapbox://styles/corneto/cjscaqrr005ow1fo5tsjile1h'"
+    [zoom]="[3.5]"
+    [center]="[-1.129331, 37.987391]"
+  >
+
+   <!--Markers individuos-->
+  <mgl-marker
+    [lngLat]="[-5.700144, 44.727501]"
+  >
+    <div class="marker turtle"></div>
+
+    </mgl-marker>
+
+    <mgl-marker
+    [lngLat]="[-14.770427, 40.893333]"
+    >
+      <div class="marker tuna"></div>
+
+    </mgl-marker>
+
+    <mgl-marker
+    [lngLat]="[-14.337788, 36.846606]"
+    >
+      <div class="marker whale"></div>
+    </mgl-marker>
+
+
+    <!--Markers zonas de reproducción-->
+    <mgl-marker
+    [lngLat]="[1.230405, 38.762061]"
+    >
+      <div class="marker turtle-love"></div>
+    </mgl-marker>
+
+    <mgl-marker
+    [lngLat]="[-5.751355, 36.007605]"
+    >
+      <div class="marker tuna-love"></div>
+    </mgl-marker>
+
+    <mgl-marker
+    [lngLat]="[-10.552110, 41.914274]"
+    >
+      <div class="marker whale-love"></div>
+    </mgl-marker>
+
+
+    <!--Markers individuos destacados-->
+    <mgl-marker
+    [lngLat]="[8.087931, 40.577512]"
+    >
+      <div class="marker turtle-star" (click)="openModal()">
+          <div class="tooltip-text">Agustín</div>
+      </div>
+    </mgl-marker>
+
+    <mgl-marker
+    [lngLat]="[ -7.820738, 48.007042]"
+    >
+      <div class="marker tuna-star" (click)="openModal()">
+          <div class="tooltip-text">Antoñito</div>
+      </div>
+    </mgl-marker>
+
+    <mgl-marker
+    [lngLat]="[2.891490, 53.029540]"
+    >
+      <div class="marker whale-star" (click)="openModal()">
+          <div class="tooltip-text">Renata</div>
+      </div>
+    </mgl-marker>
+
+  </mgl-map>
+
+  <app-menu-btn></app-menu-btn>
+
+  <button type="button" class="btn-find" (click)="openFormAnimals()">¿Lo has visto tú?</button>
+
+
+
+
+
+
+
