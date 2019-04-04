@@ -45,8 +45,7 @@
     position: absolute;
     z-index: map-get($z-index, 'modal');
     bottom: 0;
-    height: 180px;
-    width: 450px;
+    width: 300px;
     border: 1px solid;
     border-color: var(--color-purple-3);
 }

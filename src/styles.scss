@@ -1,8 +1,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @import "./scss/partials/_reset.css";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,400i,600,700');
 @import "./scss/partials/variables";
 @import "./scss/partials/mixins";
 @import "~mapbox-gl/dist/mapbox-gl.css";
@@ -10,3 +10,7 @@
 @import "./scss/material-components/dropdown-material.scss";
 
 
+
+.map.animation .mapboxgl-marker {
+  transition: all 900ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}

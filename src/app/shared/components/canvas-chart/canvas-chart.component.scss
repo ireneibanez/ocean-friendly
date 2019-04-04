@@ -9,13 +9,16 @@
       height: 400px;
       min-width: 750px;
       margin: 32px;
-
     }
     p {
       font-family: var(--ff-primary);
       font-size: var(--fs-normal);
       line-height: 1.5;
       max-width: 500px;
+      span{
+        font-family: var(--ff-primary);
+        font-weight: 400i;
+      }
     }
   }
 

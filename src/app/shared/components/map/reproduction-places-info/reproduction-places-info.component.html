@@ -1,0 +1,10 @@
+<div class="modal__info-places">
+  <button mat-dialog-close type="button" class="btn-close">X</button>
+  <div class="modal__info-places__data">
+      <h2>Lugar:</h2>
+      <p>{{place}}</p>
+  </div>
+  <div *ngIf="picture" class="picture-container">
+    <img src="{{ picture }}" alt="Imagen">
+  </div>
+</div>

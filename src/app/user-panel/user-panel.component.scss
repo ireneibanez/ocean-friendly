@@ -1,0 +1,125 @@
+@import "../../scss/partials/variables";
+@import "../../scss/partials/mixins";
+
+
+@media (min-width: 761px) {
+  table {
+    @include titles;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 100px 16px 0 16px;
+    min-width: 750px;
+    padding: 24px;
+    transform: translate(-50%, -50%);
+    margin-top: -100px;
+    tr > th {
+      padding: 16px;
+      font-weight: 700;
+      background: var(--color-purple-2);
+      color: var(--color-white);
+      border: 0;
+    }
+    tr {
+      border: 0;
+      border-bottom: 1px solid #eee;
+      margin: 0 0 16px 0;
+      &:nth-child(even) {
+        background: var(--color-purple-2);
+        color: var(--color-white);
+        .action-icon {
+          fill: var(--color-white);
+        }
+      }
+      & > td {
+        padding: 16px;
+      }
+    }
+    .action-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      fill: var(--color-graphite);
+    }
+    td button {
+      border: 0;
+      background-color: transparent;
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 760px) {
+
+  table {
+    @include titles;
+    margin: 88px 16px 0 16px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin: 0 0 16px 0;
+    &:first-child {
+      background: var(--color-purple-2);
+      color: var(--color-white);
+    }
+    &:nth-child(odd) {
+      background: var(--color-purple-2);
+      color: var(--color-white);
+      .action-icon {
+        fill: var(--color-white);
+      }
+    }
+  }
+
+  td {
+    border: 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+
+  td:nth-of-type(1):before { content: "Especie"; }
+  td:nth-of-type(2):before { content: "Nombre"; }
+  td:nth-of-type(3):before { content: "Número"; }
+  td:nth-of-type(4):before { content: "Estado"; }
+  td:nth-of-type(5):before { content: "Fecha"; }
+  td:nth-of-type(6):before { content: "Latitud"; }
+  td:nth-of-type(7):before { content: "Longitud"; }
+  td:nth-of-type(8):before { content: "Acciones"; }
+
+
+  .action-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    fill: var(--color-graphite)
+  }
+  td button {
+    border: 0;
+    background-color: transparent;
+  }
+
+}
+

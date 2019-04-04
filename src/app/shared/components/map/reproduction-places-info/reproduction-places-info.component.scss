@@ -1,8 +1,7 @@
 @import "../../../../../scss/partials/variables";
 @import "../../../../../scss/partials/mixins";
 
-
-.modal__info-spps{
+.modal__info-places{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,13 +20,7 @@
       top: 5px;
       right: 5px;
   }
-  h1 {
-    @include titles;
-    font-weight: 700;
-    margin-bottom: 40px;
-    font-size: var(--fs-big);
-  }
-  h2{
+   h2{
       @include titles;
       font-weight: 700;
   }
@@ -38,7 +31,7 @@
   div, div + div {
       margin-bottom: 24px;
   }
-  .picture-container, img {
+  .picture-container, img{
     max-width: 100%;
   }
   .picture-container {
@@ -46,4 +39,5 @@
     justify-content: center;
     align-items: center;
   }
+
 }

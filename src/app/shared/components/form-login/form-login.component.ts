@@ -32,4 +32,6 @@ export class FormLoginComponent implements OnInit {
     // this.form.reset();
     this.dialogRef.close();
   }
+
+
 }

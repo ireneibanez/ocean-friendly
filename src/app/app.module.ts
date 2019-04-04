@@ -25,15 +25,14 @@ import { InfoPageComponent } from './pages/info-page.component/info-page.compone
 import { PageNotFoundComponent } from './pages/page-not-found.component/page-not-found.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MenuBtnComponent } from './shared/components/menu-btns/menu-btn.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CanvasChartComponent } from '../app/shared/components/canvas-chart/canvas-chart.component';
 import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info.component';
-
-
-
+import { ReproductionPlacesInfoComponent } from '../app/shared/components/map/reproduction-places-info/reproduction-places-info.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 
 
 @NgModule({
@@ -54,10 +53,10 @@ import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info
     FormAnimalsComponent,
     FormLoginComponent,
     MenuBtnComponent,
-
     CanvasChartComponent,
-
     SppInfoComponent,
+    ReproductionPlacesInfoComponent,
+    UserPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +66,7 @@ import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info
     MatMenuModule,
     MatDialogModule,
     ReactiveFormsModule,
+    FormsModule,
     MatSidenavModule,
     HttpClientModule,
     NgxMapboxGLModule.withConfig({
@@ -80,6 +80,7 @@ import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info
     FormAnimalsComponent,
     FormLoginComponent,
     SppInfoComponent,
+    ReproductionPlacesInfoComponent,
   ]
 })
 export class AppModule { }

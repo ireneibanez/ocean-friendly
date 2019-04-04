@@ -1,12 +1,17 @@
 <form action="post" class="form-animals" [formGroup]="form" (ngSubmit)="onSaveAnimals()">
   <button mat-dialog-close type="button" class="btn-close">X</button>
   <h1>Registra tu avistamiento</h1>
-  <select name="name" id="spp-found" class="form-animals__spp">
+  <select name="name" id="spp-found" class="form-animals__spp" formControlName="spp">
       <option value="select">Selecciona la especie encontrada</option>
       <option value="whale">Ballena</option>
       <option value="turtle">Tortuga</option>
       <option value="tuna">Atún</option>
   </select>
+  <div class="form-animals__name">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" placeholder="" formControlName="name" id="name">
+      <span *ngIf="form?.controls.name.errors?.required">Campo requerido</span>
+  </div>
   <div class="form-animals__number">
       <label for="number">Número de individuos</label>
       <input type="text" name="number" placeholder="" formControlName="number" id="number">
@@ -25,22 +30,34 @@
 
   <h2>Localización</h2>
   <div class="form-animals__latitud">
-      <label for="latitud">Latitud</label>
-      <input type="text" name="latitud" placeholder="" formControlName="latitud" id="spp-latitud">
+      <label for="latitude">Latitud</label>
+      <input type="text" name="latitude" placeholder="" formControlName="latitude" id="spp-latitude">
   </div>
   <div class="form-animals__longitud">
-      <label for="longitud">Longitud</label>
-      <input type="text" name="longitud" placeholder="" formControlName="longitud" id="spp-longitud">
+      <label for="longitude">Longitud</label>
+      <input type="text" name="longitude" placeholder="" formControlName="longitude" id="spp-longitude">
   </div>
   <div class="form-animals__map">
       <label for="spp-map">Haz click en el mapa en la zona donde encontraste la especie descrita</label>
-      <div id="map-form" name="map" formControlname="map" class="map-form"></div>
+      <div id="map-form" name="map" formControlname="map" class="map-form">
+        <mgl-map
+          class="map"
+          id="map-form"
+          [style]="'mapbox://styles/corneto/cjscaqrr005ow1fo5tsjile1h'"
+          [zoom]="[3.5]"
+          [center]="[-1.129331, 37.987391]"
+        >
+        </mgl-map>
+      </div>
+
   </div>
   <div class="form-animals__picture">
       <label for="picture">Adjuntar imagen (opcional)</label>
       <input type="file" name="picture" placeholder="" formControlName="picture" id="spp-pictures">
   </div>
   <div class="btn-container">
-      <button type="button" class="btn-submit" [disabled]="!form.valid">Enviar</button>
+      <button mat-dialog-close type="button" class="btn-submit" (click)="onSaveAnimals()">Enviar</button>
   </div>
 </form>
+
+<!-- [disabled]="!form.valid" -->

@@ -2,10 +2,17 @@
 <mgl-map
     class="map"
     id="map"
+    [class.animation]="playing"
     [style]="'mapbox://styles/corneto/cjscaqrr005ow1fo5tsjile1h'"
     [zoom]="[3.5]"
     [center]="[-1.129331, 37.987391]"
   >
+  <mgl-marker
+    [lngLat]="[markerRouteData.longitude, markerRouteData.latitude]"
+    >
+      <div class="marker" [ngClass]="markerRouteData.class"></div>
+    </mgl-marker>
+
 
    <!--Markers individuos-->
   <mgl-marker
@@ -33,19 +40,19 @@
     <mgl-marker
     [lngLat]="[1.230405, 38.762061]"
     >
-      <div class="marker turtle-love"></div>
+      <div class="marker turtle-love" (click)="openRepPlacesModal()"></div>
     </mgl-marker>
 
     <mgl-marker
     [lngLat]="[-5.751355, 36.007605]"
     >
-      <div class="marker tuna-love"></div>
+      <div class="marker tuna-love" (click)="openRepPlacesModal()"></div>
     </mgl-marker>
 
     <mgl-marker
     [lngLat]="[-10.552110, 41.914274]"
     >
-      <div class="marker whale-love"></div>
+      <div class="marker whale-love" (click)="openRepPlacesModal()"></div>
     </mgl-marker>
 
 
@@ -74,12 +81,102 @@
       </div>
     </mgl-marker>
 
+
+    <!--Líneas migraciones-->
+    <div *ngIf="mapOptions.turtleMigration === true">
+      <mgl-layer
+      [id]="id"
+      type="line"
+      [source]="routeTurtleSource"
+      [layout]="{
+        'line-join': 'round',
+        'line-cap': 'round'
+      }"
+      [paint]="{
+        'line-color': '#17A589',
+        'line-width': 5
+      }"
+      >
+    </mgl-layer>
+    </div>
+
+
+    <div *ngIf="mapOptions.whaleMigration === true">
+      <mgl-layer
+      [id]="id"
+      type="line"
+      [source]="routeWhaleSource"
+      [layout]="{
+        'line-join': 'round',
+        'line-cap': 'round'
+      }"
+      [paint]="{
+        'line-color': '#3498DB',
+        'line-width': 5
+      }"
+      >
+      </mgl-layer>
+    </div>
+
+    <div *ngIf="mapOptions.tunaMigration === true">
+      <mgl-layer
+      [id]="id"
+      type="line"
+      [source]="routeTunaSource"
+      [layout]="{
+        'line-join': 'round',
+        'line-cap': 'round'
+      }"
+      [paint]="{
+        'line-color': '#C0392B',
+        'line-width': 5
+      }"
+      >
+      </mgl-layer>
+    </div>
+
+
   </mgl-map>
 
-  <app-menu-btn></app-menu-btn>
+  <app-menu-btn (mapOptionsEmitter)="updateMapOptions($event)"></app-menu-btn>
 
   <button type="button" class="btn-find" (click)="openFormAnimals()">¿Lo has visto tú?</button>
 
+  <div class="map-legend">
+    <div class="map-legend__container">
+        <div class="map-legend__divider">
+            <div class="icons-container">
+              <img src="/assets/images/icons/turtle.svg" alt="Tortuga">
+                <span class="legend-title">Tortugas</span>
+            </div>
+            <div class="icons-container">
+              <img src="/assets/images/icons/whale.svg" alt="Ballena">
+                <span class="legend-title">Ballenas</span>
+            </div>
+            <div class="icons-container">
+              <img src="/assets/images/icons/tuna.svg" alt="Atún">
+                <span class="legend-title">Atunes</span>
+            </div>
+        </div>
+        <div class="map-legend__divider map-legend__divider--separate">
+            <div class="icons-container">
+              <img src="/assets/images/icons/heart.svg" alt="Imagen corazón" class="map-legend__heart">
+                <span class="legend-title">Zonas de reproducción</span>
+            </div>
+            <div class="icons-container">
+              <img src="/assets/images/icons/star.svg" alt="Imagen estrella" class="map-legend__star">
+                <span class="legend-title">Individuos destacados</span>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="migration-player" *ngIf="mapOptions.tunaMigration === true || mapOptions.whaleMigration === true ||
+  mapOptions.turtleMigration === true">
+    <button type="button" (click)="playMigrationRoute()">
+      <img src="/assets/images/play.svg" alt="Botón play" >
+    </button>
+  </div>
 
 
 
