@@ -19,6 +19,7 @@ export class MenuBtnComponent implements OnInit {
   mySpecies: boolean;
   reproductionPlaces: boolean;
   individuals: boolean;
+  migrationRoutes: string;
 
   constructor() { }
 
@@ -36,10 +37,9 @@ export class MenuBtnComponent implements OnInit {
   }
 
   selectMigrationRoute(name) {
-    this.initValues();
-    this.initRoutesValues();
-    this[name] = !this[name];
+    // this.initValues();
     this.sendMapOptions();
+
   }
 
   initValues() {
@@ -59,9 +59,9 @@ export class MenuBtnComponent implements OnInit {
 
   sendMapOptions() {
     const config = {
-      tunaMigration: this.tunaMigrationSwitch,
-      whaleMigration: this.whaleMigrationSwitch,
-      turtleMigration: this.turtleMigrationSwitch,
+      tunaMigration: this.migrationRoutes === 'tuna',
+      whaleMigration: this.migrationRoutes === 'whale',
+      turtleMigration:this.migrationRoutes === 'turtle',
       tuna: this.tuna,
       whale: this.whale,
       turtle: this.turtle,

@@ -1,7 +1,7 @@
 
 <table role="table">
     <thead role="rowgroup">
-      <tr role="row">
+      <tr role="row" class="header-row">
         <th role="columnheader">Especie</th>
         <th role="columnheader">Nombre</th>
         <th role="columnheader">Número</th>
@@ -16,8 +16,8 @@
       <tr role="row" *ngFor="let data of dataSource">
         <td role="cell" >{{data.spp}}</td>
         <td role="cell">{{data.name}}</td>
-        <td role="cell">{{data.number}}</td>
-        <td role="cell">{{data.date}}</td>
+        <td role="cell">{{data.numAnimals}}</td>
+        <td role="cell">{{data.createdAt}}</td>
         <td role="cell">{{data.status}}</td>
         <td role="cell">{{data.latitude}}</td>
         <td role="cell">{{data.longitude}}</td>

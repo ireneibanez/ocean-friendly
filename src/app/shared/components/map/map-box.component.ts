@@ -161,7 +161,7 @@ export class MapBoxComponent implements OnInit {
 
     this.markerRouteData.latitude = lat;
     this.markerRouteData.longitude = lon;
-    i = i +1;
+    i = i+1;
     if (i < this.coordinates.length) {
       setTimeout(() => this.updateMarkerData(i), 1000);
     } else {

@@ -12,13 +12,13 @@ export class UserPanelComponent implements OnInit {
 
   spp: string;
   name: string;
-  number: string;
+  numAnimals: string;
   status: string;
-  date: string;
-  latitude: string;
-  longitude: string;
+  createdAt: string;
+  latitude: object;
+  longitude: object;
 
-  displayedColumns: string[] = ['spp', 'name', 'number', 'status', 'date', 'latitude', 'longitude'];
+  displayedColumns: any[] = ['spp', 'name', 'number', 'status', 'date', 'latitude', 'longitude'];
   dataSource: any[];
 
   constructor( public dialog: MatDialog ) { }
@@ -28,27 +28,27 @@ export class UserPanelComponent implements OnInit {
       {
         spp: 'whale',
         name: 'Juanito',
-        number: '1',
+        numAnimals: '1',
         status: 'Good',
-        date: '05-01-2018',
+        createdAt: '05-01-2018',
         latitude: 'LAT',
         longitude: 'LONG'
       },
       {
         spp: 'turtle',
         name: 'Pepi',
-        number: '1',
+        numAnimals: '1',
         status: 'Bad',
-        date: '01-02-2015',
+        createdAt: '01-02-2015',
         latitude: 'LAT',
         longitude: 'LONG'
       },
       {
         spp: 'tuna',
         name: 'Tartar',
-        number: '2',
+        numAnimals: '2',
         status: 'Buen estado',
-        date: '01-09-2016',
+        createdAt: '01-09-2016',
         latitude: 'LAT',
         longitude: 'LONG'
       },
@@ -81,7 +81,7 @@ export class UserPanelComponent implements OnInit {
 
   edit (dataSource, data) {
 
-    if (data === undefined) {
+    if (!data) {
       return;
     }
 
@@ -98,6 +98,5 @@ export class UserPanelComponent implements OnInit {
   add (data) {
     this.dataSource.push(data);
   }
-
 
 }

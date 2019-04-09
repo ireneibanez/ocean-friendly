@@ -130,8 +130,8 @@
   .migration-player {
     position: absolute;
     bottom: 0;
-    left: 33%;
-    right: 33%;
+    left: 25%;
+    right: 25%;
     height: 52px;
     background-color: var(--color-purple-3);
     z-index: map-get($z-index, 'button');
@@ -142,8 +142,9 @@
     button {
       background-color: transparent;
       border: 0;
-      img {
+      .icon-player {
         width: 40px;
+        fill: var(--color-white);
       }
     }
   }
@@ -186,5 +187,27 @@
 
 .legend-title {
   @include switch-title;
+}
+
+.migration-player {
+  position: absolute;
+  bottom: 20%;
+  left: 25%;
+  right: 25%;
+  height: 52px;
+  background-color: var(--color-purple-3);
+  z-index: map-get($z-index, 'button');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  button {
+    background-color: transparent;
+    border: 0;
+    .icon-player {
+      width: 40px;
+      fill: var(--color-white);
+    }
+  }
 }
 }

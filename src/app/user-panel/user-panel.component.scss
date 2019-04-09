@@ -13,6 +13,7 @@
     padding: 24px;
     transform: translate(-50%, -50%);
     margin-top: -100px;
+
     tr > th {
       padding: 16px;
       font-weight: 700;
@@ -22,13 +23,20 @@
     }
     tr {
       border: 0;
-      border-bottom: 1px solid #eee;
+      // border-bottom: 1px solid #eee;
       margin: 0 0 16px 0;
       &:nth-child(even) {
-        background: var(--color-purple-2);
-        color: var(--color-white);
+        background: var(--color-purple-1);
+        color: var(--color-graphite);
         .action-icon {
-          fill: var(--color-white);
+          fill: var(--color-graphite);
+        }
+      }
+      &:nth-child(odd) {
+        background: var(--color-purple-base);
+        color: var(--color-graphite);
+        .action-icon {
+          fill: var(--color-graphite);
         }
       }
       & > td {
@@ -78,6 +86,13 @@
       color: var(--color-white);
       .action-icon {
         fill: var(--color-white);
+      }
+    }
+    &:nth-child(even) {
+      background: var(--color-purple-base);
+      color: var(--color-graphite);
+      .action-icon {
+        fill: var(--color-graphite);
       }
     }
   }

@@ -28,8 +28,6 @@ export class FormLoginComponent implements OnInit {
   }
 
   onSave(value) {
-    // this.save.emit(value);
-    // this.form.reset();
     this.dialogRef.close();
   }
 

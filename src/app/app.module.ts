@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatMenuModule} from '@angular/material';
-import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatButtonModule, MatMenuModule,   MatDatepickerModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
@@ -67,7 +66,10 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     MatDialogModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSidenavModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatInputModule,
     HttpClientModule,
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',

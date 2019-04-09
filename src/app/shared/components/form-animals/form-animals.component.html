@@ -1,7 +1,7 @@
 <form action="post" class="form-animals" [formGroup]="form" (ngSubmit)="onSaveAnimals()">
   <button mat-dialog-close type="button" class="btn-close">X</button>
   <h1>Registra tu avistamiento</h1>
-  <select name="name" id="spp-found" class="form-animals__spp" formControlName="spp">
+  <select name="spp" id="spp-found" class="form-animals__spp" formControlName="spp">
       <option value="select">Selecciona la especie encontrada</option>
       <option value="whale">Ballena</option>
       <option value="turtle">Tortuga</option>
@@ -13,51 +13,56 @@
       <span *ngIf="form?.controls.name.errors?.required">Campo requerido</span>
   </div>
   <div class="form-animals__number">
-      <label for="number">Número de individuos</label>
-      <input type="text" name="number" placeholder="" formControlName="number" id="number">
-      <span *ngIf="form?.controls.number.errors?.required">Campo requerido</span>
+      <label for="numAnimals">Nº de individuos</label>
+      <input type="text" name="numAnimals" placeholder="" formControlName="numAnimals" id="numAnimals">
+      <span *ngIf="form?.controls.numAnimals.errors?.required">Campo requerido</span>
   </div>
   <div class="form-animals__status">
       <label for="status">Estado</label>
       <input type="text" name="status" placeholder="" formControlName="status" id="status">
       <span *ngIf="form?.controls.status.errors?.required">Campo requerido</span>
   </div>
+
   <div class="form-animals__date">
-    <label for="date">Fecha</label>
-    <input type="date" name="date" placeholder="" formControlName="date" id="date">
-    <span *ngIf="form?.controls.date.errors?.required">Campo requerido</span>
+    <label for="createdAt">Fecha</label>
+    <input matInput [matDatepicker]="picker" placeholder="" formControlName="createdAt" id="createdAt" class="date-input" autocomplete="off" readonly>
+    <div class="mat-date-container">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+    <span *ngIf="form?.controls.status.errors?.required">Campo requerido</span>
   </div>
 
   <h2>Localización</h2>
   <div class="form-animals__latitud">
       <label for="latitude">Latitud</label>
-      <input type="text" name="latitude" placeholder="" formControlName="latitude" id="spp-latitude">
+      <input type="text" name="latitude" placeholder="" formControlName="latitude" id="spp-latitude" [value]="coordinate?.lat">
   </div>
   <div class="form-animals__longitud">
       <label for="longitude">Longitud</label>
-      <input type="text" name="longitude" placeholder="" formControlName="longitude" id="spp-longitude">
+      <input type="text" name="longitude" placeholder="" formControlName="longitude" id="spp-longitude" [value]="coordinate?.long">
   </div>
   <div class="form-animals__map">
       <label for="spp-map">Haz click en el mapa en la zona donde encontraste la especie descrita</label>
-      <div id="map-form" name="map" formControlname="map" class="map-form">
+      <div id="map-form" name="map" formControlname="map" class="map-form" >
         <mgl-map
           class="map"
           id="map-form"
           [style]="'mapbox://styles/corneto/cjscaqrr005ow1fo5tsjile1h'"
           [zoom]="[3.5]"
           [center]="[-1.129331, 37.987391]"
+          (click) = "getCoordinates($event)"
         >
         </mgl-map>
       </div>
 
   </div>
-  <div class="form-animals__picture">
+  <!-- <div class="form-animals__picture">
       <label for="picture">Adjuntar imagen (opcional)</label>
       <input type="file" name="picture" placeholder="" formControlName="picture" id="spp-pictures">
-  </div>
+  </div> -->
   <div class="btn-container">
-      <button mat-dialog-close type="button" class="btn-submit" (click)="onSaveAnimals()">Enviar</button>
+      <button mat-dialog-close type="button" class="btn-submit" (click)="onSaveAnimals()"  [disabled]="!form.valid">Enviar</button>
   </div>
 </form>
 
-<!-- [disabled]="!form.valid" -->

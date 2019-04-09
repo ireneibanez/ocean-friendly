@@ -1,0 +1,8 @@
+@import "../../scss/partials/variables";
+@import "../../scss/partials/mixins";
+
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: var(--color-purple-2);
+}
+

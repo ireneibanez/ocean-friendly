@@ -60,11 +60,13 @@
               </div>
           </div>
           <div class="map-options-menu__divider map-options-menu__divider--top-changed">
-            <p class="map-options-title">Rutas Migratorias</p>
+            <p class="map-options-title">Rutas Migratorias {{migrationRoutes}}</p>
             <div class="switch-container">
                 <input
                   type="radio"
                   id="turtle-migration-switch"
+                  [(ngModel)]="migrationRoutes"
+                  value="turtle"
                   name="migration-routes"
                   (change)="selectMigrationRoute('turtleMigrationSwitch')"
                 >
@@ -74,6 +76,8 @@
             <div class="switch-container">
                 <input
                   type="radio"
+                  [(ngModel)]="migrationRoutes"
+                  value="whale"
                   id="whale-migration-switch"
                   name="migration-routes"
                   (change)="selectMigrationRoute('whaleMigrationSwitch')"
@@ -84,6 +88,8 @@
             <div class="switch-container">
                 <input
                   type="radio"
+                  [(ngModel)]="migrationRoutes"
+                  value="tuna"
                   id="tuna-migration-switch"
                   name="migration-routes"
                   (change)="selectMigrationRoute('tunaMigrationSwitch')"
