@@ -6,6 +6,7 @@ import { ReproductionPlacesInfoComponent } from '../map/reproduction-places-info
 import { MarkersService } from 'src/app/services/markers.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-map-box',
@@ -67,7 +68,11 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   }
 
   openFormAnimals() {
-    this.dialog.open(FormAnimalsComponent);
+    const dialogConfig = new MatDialogConfig();
+    
+    //TODO: ver como c******* decirle al p*** modal que haga scroll :)
+
+    this.dialog.open(FormAnimalsComponent,dialogConfig);
   }
 
   openModal(marker) {

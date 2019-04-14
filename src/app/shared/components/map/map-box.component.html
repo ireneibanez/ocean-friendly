@@ -4,9 +4,14 @@
     id="map"
     [class.animation]="playing"
     [style]="'mapbox://styles/corneto/cjscaqrr005ow1fo5tsjile1h'"
-    [zoom]="[3.5]"
-    [center]="[-1.129331, 37.987391]"
+    [zoom]="[2]"
+    [center]="[-43.372955, 33.346581]"
   >
+
+  <mgl-control
+     mglNavigation
+     [position]="'top-left'"
+   ></mgl-control>
 
   <mgl-marker *ngFor="let marker of markers" [lngLat]="[marker.longitude, marker.latitude]">
       <div
