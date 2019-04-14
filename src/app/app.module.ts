@@ -33,7 +33,7 @@ import { ReproductionPlacesInfoComponent } from '../app/shared/components/map/re
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
 import { ClimateChangeService } from '../app/services/climateChange.service';
-
+import { MarkersService } from './services/markers.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +75,7 @@ import { ClimateChangeService } from '../app/services/climateChange.service';
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })
   ],
-  providers: [FormBuilder, ClimateChangeService],
+  providers: [FormBuilder, ClimateChangeService, MarkersService],
   bootstrap: [AppComponent],
   entryComponents: [
     FormRegisterComponent,

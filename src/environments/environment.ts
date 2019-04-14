@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiCC: 'http://climatedataapi.worldbank.org/climateweb/rest/v1/country'
+  apiCC: 'http://climatedataapi.worldbank.org/climateweb/rest/v1/country',
+  apiOcean: 'http://miapi.com',
 };
 
 /*

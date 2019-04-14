@@ -1,17 +1,19 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { FormAnimalsComponent } from '../form-animals/form-animals.component';
 import { SppInfoComponent } from '../map/spp-info/spp-info.component';
 import { ReproductionPlacesInfoComponent } from '../map/reproduction-places-info/reproduction-places-info.component';
-
-
+import { MarkersService } from 'src/app/services/markers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-map-box',
   templateUrl: './map-box.component.html',
   styleUrls: ['./map-box.component.scss'],
 })
-export class MapBoxComponent implements OnInit {
+
+export class MapBoxComponent implements OnInit, OnDestroy {
 
   mapOptions = {
     tunaMigration: false,
@@ -27,8 +29,8 @@ export class MapBoxComponent implements OnInit {
 
   playing = false;
 
+  markers:object[];
   markerRoute = false;
-
   markerRouteData = {
     longitude: null,
     latitude: null,
@@ -40,71 +42,35 @@ export class MapBoxComponent implements OnInit {
   coordinatesPosition = null;
   id = "hola"
 
-  routeTurtleSource = {
-    'type': 'geojson',
-    'data': {
-      'type': 'Feature',
-      'properties': {},
-      'geometry': {
-        'type': 'LineString',
-        'coordinates': [
-          [-13.522967, 29.262608],
-          [-16.559402, 32.506429],
-          [-26.601249, 38.569670],
-          [-28.291182, 37.591364],
-        ]
-      }
-    }
-  };
+  migrationRoutes;
 
-  routeWhaleSource = {
-    'type': 'geojson',
-    'data': {
-      'type': 'Feature',
-      'properties': {},
-      'geometry': {
-        'type': 'LineString',
-        'coordinates': [
-          [-9.368543, 42.207046],
-          [-9.332207, 51.433139],
-          [-23.473843, 58.267127],
-          [-18.216949, 63.378950],
-        ]
-      }
-    }
-  };
-
-  routeTunaSource = {
-    'type': 'geojson',
-    'data': {
-      'type': 'Feature',
-      'properties': {},
-      'geometry': {
-        'type': 'LineString',
-        'coordinates': [
-          [-9.333321, 38.654185],
-          [-30.255806, 41.975566],
-          [-57.462235, 32.816198],
-          [-76.756241, 25.731407],
-        ]
-      }
-    }
-  };
+  //TODO: ver para que se usa esto
   turtleLayer = null;
   tunaLayer= null;
 
+  private markersSubscription: Subscription;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private markerService: MarkersService) {}
 
   ngOnInit() {
-    // this.turtleLayer = this.routeTurtleSource;
+    this.migrationRoutes = this.markerService.getMigrationRoutes();
+
+    this.markersSubscription = this.markerService.fetchMarkers(this.mapOptions).subscribe(
+      (markers: object[]) => {
+        this.markers = markers;
+        console.log(this.markers);
+      },
+      (error: HttpErrorResponse) => {
+        // this.initError = 'Your places cannont be loaded. Please try again after few minutes.';
+      }
+    );
   }
 
   openFormAnimals() {
     this.dialog.open(FormAnimalsComponent);
   }
 
-  openModal() {
+  openModal(marker) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       sppName: 'Agustín',
@@ -114,6 +80,9 @@ export class MapBoxComponent implements OnInit {
       status: 'buen estado',
       picture: 'https://tusreptiles.org/wp-content/uploads/2018/07/1-Tortuga-e1532314986312.jpg'
     };
+
+    //TODO: uncomment when  
+    // dialogConfig.data = marker;
 
     this.dialog.open(SppInfoComponent, dialogConfig);
   }
@@ -137,13 +106,13 @@ export class MapBoxComponent implements OnInit {
   playMigrationRoute() {
 
    if (this.mapOptions.tunaMigration === true) {
-      this.coordinates = this.routeTunaSource.data.geometry.coordinates;
+      this.coordinates = this.migrationRoutes.tuna.data.geometry.coordinates;
       this.markerRouteData.class = 'tuna';
     } else if (this.mapOptions.whaleMigration === true) {
-      this.coordinates = this.routeWhaleSource.data.geometry.coordinates;
+      this.coordinates = this.migrationRoutes.whale.data.geometry.coordinates;
       this.markerRouteData.class = 'whale';
     } else if (this.mapOptions.turtleMigration === true) {
-      this.coordinates = this.routeTurtleSource.data.geometry.coordinates;
+      this.coordinates = this.migrationRoutes.turtle.data.geometry.coordinates;
       this.markerRouteData.class = 'turtle';
     }
 
@@ -167,9 +136,11 @@ export class MapBoxComponent implements OnInit {
     } else {
       this.playing = false;
     }
-    console.log(this.markerRouteData.latitude);
-    console.log(this.markerRouteData.longitude);
-    console.log('updateMarkerData');
   }
 
+  ngOnDestroy() {
+    if (this.markersSubscription) {
+      this.markersSubscription.unsubscribe();
+    }
+  }
 }

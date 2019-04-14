@@ -45,7 +45,7 @@ export class FormAnimalsComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       spp:[this.selectedItemForEdit ? this.selectedItemForEdit.spp: 'select', Validators.required],
-      name:[this.selectedItemForEdit ? this.selectedItemForEdit.name: '', Validators.required],
+      name:[this.selectedItemForEdit ? this.selectedItemForEdit.name: ''],
       numAnimals: [this.selectedItemForEdit ? this.selectedItemForEdit.numAnimals: '', Validators.required],
       status: [this.selectedItemForEdit ? this.selectedItemForEdit.status: '', Validators.required],
       createdAt: [this.selectedItemForEdit ? this.selectedItemForEdit.createdAt: '', Validators.required],

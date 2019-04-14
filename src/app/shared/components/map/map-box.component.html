@@ -7,94 +7,47 @@
     [zoom]="[3.5]"
     [center]="[-1.129331, 37.987391]"
   >
+
+  <mgl-marker *ngFor="let marker of markers" [lngLat]="[marker.longitude, marker.latitude]">
+      <div
+      [ngClass]="{ 
+        'turtle-love': marker.type === 'love' && marker.species === 'turtle',
+        'whale-love': marker.type === 'love' && marker.species === 'whale',
+        'tuna-love': marker.type === 'love' && marker.species === 'tuna',
+        'turtle-star': marker.type === 'individuals' && marker.species === 'turtle' && marker.mine === true,
+        'whale-star': marker.type === 'individuals' && marker.species === 'whale' && marker.mine === true,
+        'tuna-star': marker.type === 'individuals' && marker.species === 'tuna' && marker.mine === true,
+        'turtle': marker.type === 'individuals' && marker.species === 'turtle' && marker.mine === false,
+        'whale': marker.type === 'individuals' && marker.species === 'whale' && marker.mine === false,
+        'tuna': marker.type === 'individuals' && marker.species === 'tuna' && marker.mine === false
+      }"
+      class="marker {{ marker.class }}" (click)="openModal(marker)">
+          <div class="tooltip-text" *ngIf="marker.text && marker.text.length > 0">
+            {{ marker.text }}
+          </div>
+      </div>
+    </mgl-marker>
+
   <mgl-marker
     [lngLat]="[markerRouteData.longitude, markerRouteData.latitude]"
     >
       <div class="marker" [ngClass]="markerRouteData.class"></div>
     </mgl-marker>
 
-
-   <!--Markers individuos-->
-  <mgl-marker
-    [lngLat]="[-5.700144, 44.727501]"
-  >
-    <div class="marker turtle"></div>
-
-    </mgl-marker>
-
-    <mgl-marker
-    [lngLat]="[-14.770427, 40.893333]"
-    >
-      <div class="marker tuna"></div>
-
-    </mgl-marker>
-
-    <mgl-marker
-    [lngLat]="[-14.337788, 36.846606]"
-    >
-      <div class="marker whale"></div>
-    </mgl-marker>
-
-
-    <!--Markers zonas de reproducción-->
-    <mgl-marker
-    [lngLat]="[1.230405, 38.762061]"
-    >
-      <div class="marker turtle-love" (click)="openRepPlacesModal()"></div>
-    </mgl-marker>
-
-    <mgl-marker
-    [lngLat]="[-5.751355, 36.007605]"
-    >
-      <div class="marker tuna-love" (click)="openRepPlacesModal()"></div>
-    </mgl-marker>
-
-    <mgl-marker
-    [lngLat]="[-10.552110, 41.914274]"
-    >
-      <div class="marker whale-love" (click)="openRepPlacesModal()"></div>
-    </mgl-marker>
-
-
-    <!--Markers individuos destacados-->
-    <mgl-marker
-    [lngLat]="[8.087931, 40.577512]"
-    >
-      <div class="marker turtle-star" (click)="openModal()">
-          <div class="tooltip-text">Agustín</div>
-      </div>
-    </mgl-marker>
-
-    <mgl-marker
-    [lngLat]="[ -7.820738, 48.007042]"
-    >
-      <div class="marker tuna-star" (click)="openModal()">
-          <div class="tooltip-text">Antoñito</div>
-      </div>
-    </mgl-marker>
-
-    <mgl-marker
-    [lngLat]="[2.891490, 53.029540]"
-    >
-      <div class="marker whale-star" (click)="openModal()">
-          <div class="tooltip-text">Renata</div>
-      </div>
-    </mgl-marker>
-
-
+<!-- fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background] -->
     <!--Líneas migraciones-->
     <div *ngIf="mapOptions.turtleMigration === true">
       <mgl-layer
       [id]="id"
       type="line"
-      [source]="routeTurtleSource"
+      [source]="migrationRoutes.turtle"
       [layout]="{
         'line-join': 'round',
         'line-cap': 'round'
       }"
       [paint]="{
         'line-color': '#17A589',
-        'line-width': 5
+        'line-width': 4
       }"
       >
     </mgl-layer>
@@ -105,14 +58,14 @@
       <mgl-layer
       [id]="id"
       type="line"
-      [source]="routeWhaleSource"
+      [source]="migrationRoutes.whale"
       [layout]="{
         'line-join': 'round',
         'line-cap': 'round'
       }"
       [paint]="{
         'line-color': '#3498DB',
-        'line-width': 5
+        'line-width': 4
       }"
       >
       </mgl-layer>
@@ -122,14 +75,14 @@
       <mgl-layer
       [id]="id"
       type="line"
-      [source]="routeTunaSource"
+      [source]="migrationRoutes.tuna"
       [layout]="{
         'line-join': 'round',
         'line-cap': 'round'
       }"
       [paint]="{
         'line-color': '#C0392B',
-        'line-width': 5
+        'line-width': 4
       }"
       >
       </mgl-layer>
@@ -165,7 +118,7 @@
             </div>
             <div class="icons-container">
               <img src="/assets/images/icons/star.svg" alt="Imagen estrella" class="map-legend__star">
-                <span class="legend-title">Individuos destacados</span>
+                <span class="legend-title">Mis avistamientos</span>
             </div>
         </div>
     </div>

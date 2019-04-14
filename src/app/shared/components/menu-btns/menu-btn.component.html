@@ -32,6 +32,11 @@
     <div class="map-options-menu__divider map-options-menu__divider--top-separate">
       <p class="map-options-title">Información a mostrar</p>
       <div class="switch-container">
+        <input type="checkbox" id="individual-switch" [(ngModel)]="individuals" (change)="handleChange()">
+        <label for="individual-switch"></label>
+        <span class="switch-title">Avistamientos</span>
+      </div>
+      <div class="switch-container">
         <input type="checkbox" id="my-species-switch" [(ngModel)]="mySpecies" (change)="handleChange()">
         <label for="my-species-switch"></label>
         <span class="switch-title">Mis avistamientos</span>
@@ -40,11 +45,6 @@
         <input type="checkbox" id="reproduction-switch" [(ngModel)]="reproductionPlaces" (change)="handleChange()">
         <label for="reproduction-switch"></label>
         <span class="switch-title">Zonas de reproducción</span>
-      </div>
-      <div class="switch-container">
-        <input type="checkbox" id="individual-switch" [(ngModel)]="individuals" (change)="handleChange()">
-        <label for="individual-switch"></label>
-        <span class="switch-title">Individuos destacados</span>
       </div>
     </div>
     <div class="map-options-menu__divider map-options-menu__divider--top-changed">
