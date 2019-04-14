@@ -21,11 +21,8 @@ export class MenuBtnComponent implements OnInit {
   individuals: boolean;
   migrationRoutes: string;
 
-  constructor() { }
-
   ngOnInit() {
     this.initValues();
-    this.initRoutesValues();
   }
 
   toggleVisibilityMenuBtns() {
@@ -37,9 +34,7 @@ export class MenuBtnComponent implements OnInit {
   }
 
   selectMigrationRoute(name) {
-    // this.initValues();
     this.sendMapOptions();
-
   }
 
   initValues() {
@@ -49,9 +44,6 @@ export class MenuBtnComponent implements OnInit {
     this.individuals = false;
     this.reproductionPlaces = false;
     this.mySpecies = false;
-  }
-
-  initRoutesValues() {
     this.tunaMigrationSwitch = false;
     this.whaleMigrationSwitch = false;
     this.turtleMigrationSwitch = false;

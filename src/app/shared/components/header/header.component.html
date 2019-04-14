@@ -1,12 +1,18 @@
 
-<header class="navigation">
-  <app-btn-mobile></app-btn-mobile>
+<header class="navigation" [class.menu-visible]="menuMobileVisibility">
+  <button type="button" class="navigation__btn" (click)="toggleVisibilityMenuMobile()" [class.menu-visible]="menuMobileVisibility">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span class="sr-only">Menú</span>
+  </button>
   <img src="../../../../../assets/images/logo.svg" alt="logo" class="logo">
   <nav class="navigation__navbar">
+    <button class="btn-close" (click)="toggleVisibilityMenuMobile()">&times;</button>  
     <ul class="navigation__list list">
-        <li class="list__item"><a routerLink="/home">Inicio</a></li>
-        <li class="list__item"><a routerLink="/dashboard">Evolución de las especies</a></li>
-        <li class="list__item"><a routerLink="/info">Sobre el proyecto</a></li>
+        <li class="list__item"><a routerLink="/home" (click)="toggleVisibilityMenuMobile()">Inicio</a></li>
+        <li class="list__item"><a routerLink="/dashboard" (click)="toggleVisibilityMenuMobile()">Evolución de las especies</a></li>
+        <li class="list__item"><a routerLink="/info" (click)="toggleVisibilityMenuMobile()">Sobre el proyecto</a></li>
     </ul>
   </nav>
   <app-login></app-login>

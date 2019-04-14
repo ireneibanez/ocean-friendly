@@ -5,4 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['/header.component.scss'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+
+  menuMobileVisibility: boolean = false;
+
+  toggleVisibilityMenuMobile() {
+    this.menuMobileVisibility = !this.menuMobileVisibility;
+  }
+}

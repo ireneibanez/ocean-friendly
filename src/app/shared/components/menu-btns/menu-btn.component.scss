@@ -75,12 +75,18 @@
     }
   }
 
-  // .map-options:focus+.map-options-menu {
-  //   transform: translate3d(0, 0, 0);
-  //   position: absolute;
-  // }
+  .map-options + .map-options-menu.menu-visible {
+    transform: translate3d(0, 0, 0);
+    transition: transform .5s ease-in-out;
+    position: absolute;
+  }
+
+  .map-options-menu.menu-visible {
+    visibility: visible;
+  }
 
   .map-options-menu {
+    visibility: hidden;
     position: fixed;
     top: 25%;
     bottom: 0;
@@ -90,8 +96,8 @@
     padding: 32px;
     z-index: map-get($z-index, 'mobile-menu');
     background-color: var(--color-purple-3);
-    // transform: translate3d(-100%, 0, 0);
-    // transition: transform .25s ease-in-out;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform .5s ease-in-out;
       .map-options-menu__container {
         height: 100%;
         width: 100%;
@@ -109,6 +115,7 @@
           .map-options-icon-close{
             height: 50px;
             width: 50px;
+            cursor: pointer;
           }
 
         }
@@ -141,9 +148,6 @@
   }
 }
 
-
-
-
 @media screen and (max-width: 768px) {
   .map-options {
     @include button;
@@ -157,13 +161,12 @@
     &-icon-open {
       display: none;
     }
-
   }
 
-  // .map-options:focus+.map-options-menu {
-  //   transform: translate3d(0, 0, 0);
-  //   position: absolute;
-  // }
+  .map-options + .map-options-menu.menu-visible {
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+  }
 
   .map-options-menu {
     position: fixed;
@@ -178,8 +181,8 @@
     flex-direction: column;
     // align-items: flex-start;
     padding-top: 1.875rem;
-    // transform: translate3d(0, 100%, 0);
-    // transition: transform .25s ease-in-out;
+    transform: translate3d(0, 100%, 0);
+    transition: transform .25s ease-in-out;
       .map-options-menu__container {
         height: 100%;
         width: 100%;
@@ -200,7 +203,7 @@
           .map-options-icon-down {
             height: 50px;
             width: 50px;
-
+            cursor: pointer;
           }
         }
         .map-options-menu__divider {

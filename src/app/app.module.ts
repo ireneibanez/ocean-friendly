@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapBoxComponent } from './shared/components/map/map-box.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { BtnMobileComponent } from './shared/components/header/btn-mobile/btn-mobile.component'
 import { LoginComponent } from './shared/components/header/login/login.component';
 import { FormAnimalsComponent } from './shared/components/form-animals/form-animals.component';
 import { FormRegisterComponent } from './shared/components/form-register/form-register.component';
@@ -41,7 +40,6 @@ import { ClimateChangeService } from '../app/services/climateChange.service';
     AppComponent,
     MapBoxComponent,
     HeaderComponent,
-    BtnMobileComponent,
     LoginComponent,
     HomePageComponent,
     PanelPageComponent,
