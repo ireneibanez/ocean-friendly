@@ -11,6 +11,11 @@
 @import "./scss/material-components/date-picker.scss";
 
 .map.animation .mapboxgl-marker {
-  transition: all 900ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  // transition: all 900ms linear;
+  transition: all 500ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.mapboxgl-ctrl-group {
+  top: 88px;
+  position: absolute;
+  left: 9px;
 }
