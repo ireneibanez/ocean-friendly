@@ -33,6 +33,8 @@ import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info
 import { ReproductionPlacesInfoComponent } from '../app/shared/components/map/reproduction-places-info/reproduction-places-info.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
+import { ClimateChangeService } from '../app/services/climateChange.service';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })
   ],
-  providers: [FormBuilder],
+  providers: [FormBuilder, ClimateChangeService],
   bootstrap: [AppComponent],
   entryComponents: [
     FormRegisterComponent,
@@ -83,6 +85,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     FormLoginComponent,
     SppInfoComponent,
     ReproductionPlacesInfoComponent,
-  ]
+  ],
+
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
+
 @Component({
   selector: 'app-reproduction-places-info',
   templateUrl: './reproduction-places-info.component.html',
@@ -18,6 +19,7 @@ export class ReproductionPlacesInfoComponent implements OnInit {
     if (data && data.picture) {
       this.picture = data.picture;
     }
+
 
    }
 
