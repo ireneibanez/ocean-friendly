@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { of, Observable } from 'rxjs';
+import { Marker } from '../model/marker.model';
 
 const apiUrl = environment.apiOcean;
 
@@ -119,138 +120,210 @@ export class MarkersService {
     }
   };
 
-  markers = [
+  markers: Marker[] = [
     {
       longitude: -5.700144,
       latitude: 44.727501,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'individuals',
-      text: '',
-      mine: false
+      name: 'Luís',
+      mine: false,
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: 'Caparazón en muy buen estado'
     },
     {
       longitude: -14.770427,
       latitude: 40.893333,
-      species: 'tuna',
+      spp: 'tuna',
       type: 'individuals',
-      text: '',
-      mine: true
+      name: 'Pepe',
+      mine: true,
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: 'Muy grande'
     },
     {
       longitude: -14.337788,
       latitude: 36.846606,
-      species: 'whale',
+      spp: 'whale',
       type: 'individuals',
-      text: '',
-      mine: false
+      name: 'La pandilla feliz',
+      mine: false,
+      picture: '',
+      createdAt: '',
+      numAnimals: 3,
+      status: 'Grupo de ballenas que iban muy juntas'
     },
     { 
       longitude: -23.443281,
       latitude: 15.406215,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'love',
-      text: ''
+      name: 'Las tortugas ninja',
+      picture: '',
+      createdAt: '',
+      numAnimals: 5,
+      status: 'Muy rápidas, casi no las ves'
     },
     {  
       longitude: -0.612442,
       latitude: 37.710681,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {  
       longitude: -16.894436,
       latitude: 27.635168,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {   
       longitude: 2.659747,
       latitude: 39.255417,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     { 
       longitude: 20.256259,
       latitude: 38.709630,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {
       longitude: -90.219488,
       latitude: 25.110005,
-      species: 'tuna',
+      spp: 'tuna',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {
       longitude: 21.178576,
       latitude: 35.297258,
-      species: 'tuna',
+      spp: 'tuna',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {
       longitude: -74.481626,
       latitude: 26.794279,
-      species: 'tuna',
+      spp: 'tuna',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {
       longitude: -40.568458,
       latitude: 36.566779,
-      species: 'whale',
+      spp: 'whale',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     { 
       longitude: -91.707920,
       latitude: -11.642018,
-      species: 'whale',
+      spp: 'whale',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {
       longitude: 81.352197,
       latitude: 0.720585,
-      species: 'whale',
+      spp: 'whale',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     { 
       longitude: 158.176738,
       latitude: 1.634195,
-      species: 'whale',
+      spp: 'whale',
       type: 'love',
-      text: ''
+      name: '',
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: ''
     },
     {
       longitude: 8.087931,
       latitude: 40.577512,
-      species: 'turtle',
+      spp: 'turtle',
       type: 'individuals',
-      text: 'Agustín',
-      mine: true
+      name: 'Agustín',
+      mine: true,
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: 'Es muy bello, tiene un color verde precioso'
     },
     {
       longitude: -7.820738,
       latitude: 48.007042,
-      species: 'tuna',
+      spp: 'tuna',
       type: 'individuals',
-      text: 'Antoñito',
-      mine: false
+      name: 'Antoñito',
+      mine: false,
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: 'Parece muy fuerte, está to petao'
     },
     {
       longitude: 2.891490,
       latitude: 53.029540,
-      species: 'whale',
+      spp: 'whale',
       type: 'individuals',
-      text: 'Renata',
-      mine: true
+      name: 'Renata',
+      mine: true,
+      picture: '',
+      createdAt: '',
+      numAnimals: 1,
+      status: 'Parece en buen estado'
     }
   ]
 

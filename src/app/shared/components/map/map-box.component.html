@@ -16,15 +16,15 @@
   <mgl-marker *ngFor="let marker of markers" [lngLat]="[marker.longitude, marker.latitude]">
       <div
       [ngClass]="{ 
-        'turtle-love': marker.type === 'love' && marker.species === 'turtle',
-        'whale-love': marker.type === 'love' && marker.species === 'whale',
-        'tuna-love': marker.type === 'love' && marker.species === 'tuna',
-        'turtle-star': marker.type === 'individuals' && marker.species === 'turtle' && marker.mine === true,
-        'whale-star': marker.type === 'individuals' && marker.species === 'whale' && marker.mine === true,
-        'tuna-star': marker.type === 'individuals' && marker.species === 'tuna' && marker.mine === true,
-        'turtle': marker.type === 'individuals' && marker.species === 'turtle' && marker.mine === false,
-        'whale': marker.type === 'individuals' && marker.species === 'whale' && marker.mine === false,
-        'tuna': marker.type === 'individuals' && marker.species === 'tuna' && marker.mine === false
+        'turtle-love': marker.type === 'love' && marker.spp === 'turtle',
+        'whale-love': marker.type === 'love' && marker.spp === 'whale',
+        'tuna-love': marker.type === 'love' && marker.spp === 'tuna',
+        'turtle-star': marker.type === 'individuals' && marker.spp === 'turtle' && marker.mine === true,
+        'whale-star': marker.type === 'individuals' && marker.spp === 'whale' && marker.mine === true,
+        'tuna-star': marker.type === 'individuals' && marker.spp === 'tuna' && marker.mine === true,
+        'turtle': marker.type === 'individuals' && marker.spp === 'turtle' && marker.mine === false,
+        'whale': marker.type === 'individuals' && marker.spp === 'whale' && marker.mine === false,
+        'tuna': marker.type === 'individuals' && marker.spp === 'tuna' && marker.mine === false
       }"
       class="marker {{ marker.class }}" (click)="openModal(marker)">
           <div class="tooltip-text" *ngIf="marker.text && marker.text.length > 0">

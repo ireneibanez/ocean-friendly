@@ -1,24 +1,32 @@
 
 <div class="modal__info-spps">
-  <button mat-dialog-close type="button" class="btn-close">X</button>
-  <h1>{{sppName}}</h1>
-  <div class="modal__info-spss__place">
-    <h2>Lugar del último avistamento:</h2>
-    <p>{{place}}</p>
+  <button mat-dialog-close type="button" class="btn-close">&times;</button>
+  <h1>{{ sigthseen.spp }}</h1>
+  <div class="modal__info-spss__name" *ngIf="sigthseen.name">
+    <h2>Nombre:</h2>
+    <p>{{ sigthseen.name }}</p>
   </div>
-  <div class="modal__info-spss__weight">
-    <h2>Peso:</h2>
-    <p>{{weigth}}</p>
+  <div class="modal__info-spss__num-animals" *ngIf="sigthseen.numAnimals">
+    <h2>Número de individuos:</h2>
+    <p>{{ sigthseen.numAnimals }}</p>
   </div>
-  <div class="modal__info-spss__marks">
-    <h2>Marcas:</h2>
-    <p>{{marks}}</p>
+  <div class="modal__info-spss__status" *ngIf="sigthseen.status">
+    <h2>Estado:</h2>
+    <p>{{ sigthseen.status }}</p>
   </div>
-  <div class="modal__info-spss__additional-data">
-    <h2>Otros datos de interés:</h2>
-    <p>{{status}}</p>
+  <div class="modal__info-spss__latitude" *ngIf="sigthseen.latitude">
+    <h2>Latitud:</h2>
+    <p>{{ sigthseen.latitude }}</p>
   </div>
-  <div *ngIf="picture" class="picture-container">
+  <div class="modal__info-spss__longitude" *ngIf="sigthseen.longitude">
+    <h2>Longitud:</h2>
+    <p>{{ sigthseen.longitude }}</p>
+  </div>
+  <div class="modal__info-spss__created-at" *ngIf="sigthseen.createdAt">
+    <h2>Fecha del avistamiento:</h2>
+    <p>{{ sigthseen.createdAt }}</p>
+  </div>
+  <div *ngIf="sigthseen.picture" class="picture-container">
     <img src="{{ picture }}" alt="Imagen">
   </div>
 </div>

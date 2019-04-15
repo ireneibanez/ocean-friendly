@@ -77,30 +77,25 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   openModal(marker) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {
-      sppName: 'Agustín',
-      place: 'Maldivas',
-      weight: 52,
-      marks: 'anillos laterales',
-      status: 'buen estado',
-      picture: 'https://tusreptiles.org/wp-content/uploads/2018/07/1-Tortuga-e1532314986312.jpg'
-    };
+    // dialogConfig.data = {
+    //   sppName: 'Agustín',
+    //   place: 'Maldivas',
+    //   weight: 52,
+    //   marks: 'anillos laterales',
+    //   status: 'buen estado',
+    //   picture: 'https://tusreptiles.org/wp-content/uploads/2018/07/1-Tortuga-e1532314986312.jpg'
+    // };
 
     //TODO: uncomment when  
-    // dialogConfig.data = marker;
+    dialogConfig.data = marker;
 
-    this.dialog.open(SppInfoComponent, dialogConfig);
+    if (marker.type === 'love') {
+      this.dialog.open(ReproductionPlacesInfoComponent, dialogConfig);
+    } else {
+      this.dialog.open(SppInfoComponent, dialogConfig);
+    }
   }
 
-  openRepPlacesModal() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {
-      place: 'Bolonia (Cádiz)',
-      picture: 'https://www.zaharadelosatunes.info/wp-content/uploads/2014/11/bol1.jpg'
-    };
-
-    this.dialog.open(ReproductionPlacesInfoComponent, dialogConfig);
-  }
 
   updateMapOptions($event) {
     console.log('llegan las opciones', $event);
@@ -110,7 +105,11 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   playMigrationRoute() {
 
-   if (this.mapOptions.tunaMigration === true) {
+    if (this.playing) {
+      return false;
+    }
+
+    if (this.mapOptions.tunaMigration === true) {
       this.coordinates = this.migrationRoutes.tuna.data.geometry.coordinates;
       this.markerRouteData.class = 'tuna';
     } else if (this.mapOptions.whaleMigration === true) {
