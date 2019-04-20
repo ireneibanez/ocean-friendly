@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiCC: 'http://climatedataapi.worldbank.org/climateweb/rest/v1/country',
-  apiOcean: 'http://miapi.com',
+  apiOcean: 'http://localhost:3000',
 };
 
 /*

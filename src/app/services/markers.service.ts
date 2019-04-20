@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { of, Observable } from 'rxjs';
 import { Marker } from '../model/marker.model';
 
-const apiUrl = environment.apiOcean;
+const apiOcean = environment.apiOcean;
 
 @Injectable({
   providedIn: 'root'
@@ -53,13 +53,13 @@ export class MarkersService {
           [-74.811306, 25.247000],
           [-75.632841, 31.921013],
           [-71.199295, 34.848355],
-          [-71.612101, 39.770114], 
+          [-71.612101, 39.770114],
           [-67.511759, 42.372048],
-          [-62.975576, 43.867339], 
-          [-57.473130, 45.936491], 
+          [-62.975576, 43.867339],
+          [-57.473130, 45.936491],
           [-47.305171, 45.724207],
-          [-51.926586, 57.009205], 
-          [-39.617639, 59.402087], 
+          [-51.926586, 57.009205],
+          [-39.617639, 59.402087],
           [-34.342918, 65.191825],
           [-34.342915, 65.191820]
         ]
@@ -77,44 +77,44 @@ export class MarkersService {
         'coordinates': [
           [-89.670122, 24.865802],
           [-79.982570, 24.029435],
-          [-77.914172, 28.178428], 
-          [-71.699607, 36.711986], 
+          [-77.914172, 28.178428],
+          [-71.699607, 36.711986],
           [-64.399688, 36.994266],
-          [-54.946952, 41.591907], 
+          [-54.946952, 41.591907],
           [-47.682340, 45.403188],
           [-32.872307, 53.160226],
           [-15.718931, 54.107208],
-          [-9.883460, 56.120832], 
-          [-5.750597, 59.856036], 
-          [0.428280, 58.010850], 
-          [3.174246, 52.615353], 
-          [0.872744, 50.383344], 
-          [-5.994466, 48.967107], 
-          [-5.015292, 45.442347], 
-          [-10.720471, 43.781731], 
-          [-9.678708, 36.666672], 
-          [-7.019690, 36.588820], 
-          [-5.995908, 35.991257], 
-          [-1.733012, 36.183243], 
-          [6.852718, 38.579004], 
-          [12.493545, 37.101032], 
-          [18.314132, 34.321591], 
-          [26.141484, 32.524163], 
-          [27.139415, 34.663470], 
-          [22.729442, 34.772296], 
-          [18.845087, 36.290971], 
-          [12.865186, 36.566327], 
-          [10.412869, 38.237201], 
-          [-2.686720, 35.919873], 
-          [-5.210898, 36.018792], 
-          [-6.248492, 35.996639], 
-          [-16.903467, 33.239580], 
-          [-27.976910, 37.324772], 
-          [-60.455569, 19.032344], 
-          [-73.761201, 14.493609], 
-          [-85.071324, 20.222332], 
-          [-89.604695, 24.317108], 
-          [-89.604690, 24.317105], 
+          [-9.883460, 56.120832],
+          [-5.750597, 59.856036],
+          [0.428280, 58.010850],
+          [3.174246, 52.615353],
+          [0.872744, 50.383344],
+          [-5.994466, 48.967107],
+          [-5.015292, 45.442347],
+          [-10.720471, 43.781731],
+          [-9.678708, 36.666672],
+          [-7.019690, 36.588820],
+          [-5.995908, 35.991257],
+          [-1.733012, 36.183243],
+          [6.852718, 38.579004],
+          [12.493545, 37.101032],
+          [18.314132, 34.321591],
+          [26.141484, 32.524163],
+          [27.139415, 34.663470],
+          [22.729442, 34.772296],
+          [18.845087, 36.290971],
+          [12.865186, 36.566327],
+          [10.412869, 38.237201],
+          [-2.686720, 35.919873],
+          [-5.210898, 36.018792],
+          [-6.248492, 35.996639],
+          [-16.903467, 33.239580],
+          [-27.976910, 37.324772],
+          [-60.455569, 19.032344],
+          [-73.761201, 14.493609],
+          [-85.071324, 20.222332],
+          [-89.604695, 24.317108],
+          [-89.604690, 24.317105],
         ]
       }
     }
@@ -127,7 +127,6 @@ export class MarkersService {
       spp: 'turtle',
       type: 'individuals',
       name: 'Luís',
-      mine: false,
       picture: '',
       createdAt: '',
       numAnimals: 1,
@@ -139,7 +138,6 @@ export class MarkersService {
       spp: 'tuna',
       type: 'individuals',
       name: 'Pepe',
-      mine: true,
       picture: '',
       createdAt: '',
       numAnimals: 1,
@@ -151,24 +149,23 @@ export class MarkersService {
       spp: 'whale',
       type: 'individuals',
       name: 'La pandilla feliz',
-      mine: false,
       picture: '',
       createdAt: '',
       numAnimals: 3,
       status: 'Grupo de ballenas que iban muy juntas'
     },
-    { 
+    {
       longitude: -23.443281,
       latitude: 15.406215,
       spp: 'turtle',
-      type: 'love',
+      type: 'individuals',
       name: 'Las tortugas ninja',
       picture: '',
       createdAt: '',
       numAnimals: 5,
       status: 'Muy rápidas, casi no las ves'
     },
-    {  
+    {
       longitude: -0.612442,
       latitude: 37.710681,
       spp: 'turtle',
@@ -179,7 +176,7 @@ export class MarkersService {
       numAnimals: 1,
       status: ''
     },
-    {  
+    {
       longitude: -16.894436,
       latitude: 27.635168,
       spp: 'turtle',
@@ -190,7 +187,7 @@ export class MarkersService {
       numAnimals: 1,
       status: ''
     },
-    {   
+    {
       longitude: 2.659747,
       latitude: 39.255417,
       spp: 'turtle',
@@ -201,7 +198,7 @@ export class MarkersService {
       numAnimals: 1,
       status: ''
     },
-    { 
+    {
       longitude: 20.256259,
       latitude: 38.709630,
       spp: 'turtle',
@@ -256,7 +253,7 @@ export class MarkersService {
       numAnimals: 1,
       status: ''
     },
-    { 
+    {
       longitude: -91.707920,
       latitude: -11.642018,
       spp: 'whale',
@@ -278,7 +275,7 @@ export class MarkersService {
       numAnimals: 1,
       status: ''
     },
-    { 
+    {
       longitude: 158.176738,
       latitude: 1.634195,
       spp: 'whale',
@@ -295,7 +292,6 @@ export class MarkersService {
       spp: 'turtle',
       type: 'individuals',
       name: 'Agustín',
-      mine: true,
       picture: '',
       createdAt: '',
       numAnimals: 1,
@@ -307,7 +303,6 @@ export class MarkersService {
       spp: 'tuna',
       type: 'individuals',
       name: 'Antoñito',
-      mine: false,
       picture: '',
       createdAt: '',
       numAnimals: 1,
@@ -319,7 +314,6 @@ export class MarkersService {
       spp: 'whale',
       type: 'individuals',
       name: 'Renata',
-      mine: true,
       picture: '',
       createdAt: '',
       numAnimals: 1,
@@ -331,7 +325,7 @@ export class MarkersService {
 
   fetchMarkers(options): Observable<object> {
     return of(this.markers);
-    // return this.httpClient.get(apiUrl + '/markers')
+    // return this.httpClient.get(apiOcean + '/sighting');
   }
 
   getMigrationRoutes(): object {

@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-menu-btn',
@@ -21,8 +24,15 @@ export class MenuBtnComponent implements OnInit {
   individuals: boolean;
   migrationRoutes: string;
 
+  userLogged: User;
+  private userLoggedSubscription: Subscription;
+
+  constructor(private authService: AuthService) {}
+
   ngOnInit() {
     this.initValues();
+    this.userLogged = this.authService.getUserLogged();
+    console.log('on init menu btn', this.userLogged);
   }
 
   toggleVisibilityMenuBtns() {

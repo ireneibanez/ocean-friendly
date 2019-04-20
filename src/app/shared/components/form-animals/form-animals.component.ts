@@ -60,7 +60,6 @@ export class FormAnimalsComponent implements OnInit {
   }
 
   close() {
-    console.log();
     this.dialogRef.close();
   }
 

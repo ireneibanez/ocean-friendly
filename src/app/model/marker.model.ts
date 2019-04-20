@@ -1,6 +1,3 @@
-import { Sigthseen } from './sigthseen.model';
+import { Sigthing } from './sigthing.model';
 
-export interface Marker extends Sigthseen {
-    type: string,
-    mine?: boolean,
-}
+export interface Marker extends Sigthing {}

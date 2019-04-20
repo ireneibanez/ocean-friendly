@@ -1,4 +1,4 @@
-export interface Sigthseen {
+export interface Sigthing {
     spp: string,
     name?: string,
     numAnimals: number,
@@ -7,4 +7,5 @@ export interface Sigthseen {
     longitude: number,
     picture?: string,
     createdAt: any,
+    type: string
 }

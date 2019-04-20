@@ -3,6 +3,7 @@
   <img src="/assets/images/avatar.svg" class="login-btn__avatar" alt="imagen avatar">
 </button>
 <mat-menu #menu="matMenu" yPosition="below" xPosition="before" class="login-menu">
-  <button mat-menu-item (click)="openFormLogin()">Login</button>
-  <button mat-menu-item (click)="openFormRegister()">Regístrate</button>
+  <button mat-menu-item (click)="openFormLogin()" *ngIf="!userLogged">Login</button>
+  <button mat-menu-item (click)="openFormRegister()" *ngIf="!userLogged">Regístrate</button>
+  <button mat-menu-item (click)="closeSession()" *ngIf="userLogged">Cerrar sesión</button>
 </mat-menu>

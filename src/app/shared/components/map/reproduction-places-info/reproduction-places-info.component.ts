@@ -20,8 +20,7 @@ export class ReproductionPlacesInfoComponent implements OnInit {
       this.picture = data.picture;
     }
 
-
-   }
+  }
 
   ngOnInit() {
 

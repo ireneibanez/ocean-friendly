@@ -36,7 +36,7 @@
         <label for="individual-switch"></label>
         <span class="switch-title">Avistamientos</span>
       </div>
-      <div class="switch-container">
+      <div class="switch-container" *ngIf="userLogged">
         <input type="checkbox" id="my-species-switch" [(ngModel)]="mySpecies" (change)="handleChange()">
         <label for="my-species-switch"></label>
         <span class="switch-title">Mis avistamientos</span>

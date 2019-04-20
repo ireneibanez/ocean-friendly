@@ -26,7 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormBuilder, ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MenuBtnComponent } from './shared/components/menu-btns/menu-btn.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CanvasChartComponent } from '../app/shared/components/canvas-chart/canvas-chart.component';
 import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info.component';
 import { ReproductionPlacesInfoComponent } from '../app/shared/components/map/reproduction-places-info/reproduction-places-info.component';
@@ -34,6 +34,8 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 
 import { ClimateChangeService } from '../app/services/climateChange.service';
 import { MarkersService } from './services/markers.service';
+import { AuthService } from './services/auth.service';
+import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,11 @@ import { MarkersService } from './services/markers.service';
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })
   ],
-  providers: [FormBuilder, ClimateChangeService, MarkersService],
+  providers: [FormBuilder, ClimateChangeService, MarkersService, AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   entryComponents: [
     FormRegisterComponent,
