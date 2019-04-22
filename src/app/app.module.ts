@@ -37,6 +37,8 @@ import { MarkersService } from './services/markers.service';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor } from './services/token.interceptor';
 
+import { LoginGuard } from '../app/guards/login.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +79,7 @@ import { TokenInterceptor } from './services/token.interceptor';
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })
   ],
-  providers: [FormBuilder, ClimateChangeService, MarkersService, AuthService, {
+  providers: [FormBuilder, ClimateChangeService, MarkersService, AuthService, LoginGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

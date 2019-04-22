@@ -7,18 +7,23 @@ import { PanelUserPageComponent } from './pages/panel-page.component/panel-user-
 import { DashboardPageComponent } from './pages/dashboard-page.component/dashboard-page.component';
 import { InfoPageComponent } from './pages/info-page.component/info-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found.component/page-not-found.component'
+import { LoginGuard } from './guards/login.guard';
+import { FormLoginComponent } from './shared/components/form-login/form-login.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home'
-  }, {
+  },
+  {
     path: 'home',
     component: HomePageComponent,
-  }, {
+  },
+  {
     path: 'panel',
     component: PanelPageComponent,
+    canActivate: [LoginGuard],
     // children: [
     //   {
     //     path: 'admin',
@@ -28,13 +33,20 @@ const routes: Routes = [
     //     component: PanelUserPageComponent,
     //   },
     // ]
-  }, {
+  },
+  {
     path: 'dashboard',
     component: DashboardPageComponent,
-  }, {
+  },
+  {
     path: 'info',
     component: InfoPageComponent,
-  }, {
+  },
+  // {
+  //   path: 'login',
+  //   component: FormLoginComponent,
+  // },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

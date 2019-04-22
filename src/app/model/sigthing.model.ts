@@ -7,5 +7,6 @@ export interface Sigthing {
     longitude: number,
     picture?: string,
     createdAt: any,
-    type: string
+    type: string,
+    _id?: string
 }

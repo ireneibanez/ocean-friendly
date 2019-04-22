@@ -1,0 +1,203 @@
+@import "../../../scss/partials/variables";
+@import "../../../scss/partials/mixins";
+
+// main {
+//   background-color: var(--color-blue-1);
+// }
+
+.importance {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &__title {
+    color: var(--color-purple-3);
+    font-size: var(--fs-huge);
+  }
+
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  margin-right: 24px;
+  margin-left: 24px;
+  height: 500px;
+  padding: 24px;
+  h1 {
+    text-align: center;
+    font-family: var(--ff-primary);
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--color-white);
+  }
+}
+
+.article {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 50px;
+  font-family: var(--ff-primary);
+  color: var(--color-graphite);
+  &__turtle {
+    position: relative;
+    padding: 16px;
+    h1 {
+      font-weight: 700;
+    }
+    &::before {
+      background: url("/assets/images/images/turtle.jpg") center no-repeat;
+      background-size: cover;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      filter: blur(1px);
+    }
+    .container {
+      padding: 16px;
+      position: relative;
+      z-index: 30;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__whale {
+    position: relative;
+    padding: 16px;
+    h1 {
+      font-weight: 700;
+    }
+    &::before {
+      background: url("/assets/images/images/whale.jpg") center no-repeat;
+      background-size: cover;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      filter: blur(1px);
+    }
+    .container {
+      padding: 16px;
+      position: relative;
+      z-index: 30;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__tuna {
+    position: relative;
+    padding: 16px;
+    h1 {
+      font-weight: 700;
+    }
+    &::before {
+      background: url("/assets/images/images/tuna.jpg") center no-repeat;
+      background-size: cover;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      filter: blur(1px);
+    }
+    .container {
+      padding: 16px;
+      position: relative;
+      z-index: 30;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.threats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: 40px auto;
+  padding: 24px;
+  border: 1px solid var(--color-purple-3);
+  h1 {
+    color: var(--color-purple-3);
+    font-size: var(--fs-huge);
+    margin-bottom: 32px;
+  }
+  h2, p {
+    font-family: var(--ff-primary);
+    color: var(--color-graphite);
+  }
+  h2 {
+    font-weight: 700;
+    font-size: var(--fs-normal);
+    margin: 16px 0;
+  }
+  p {
+    line-height: 1.6;
+  }
+  .container {
+    width: 50%;
+  }
+  &__image {
+    width: 500px;
+    height: 500px;;
+    border: 1px solid var(--color-purple-3);
+    background: url("/assets/images/images/turtle-nested.jpg") center no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+  }
+
+}
+
+
+
+
+@media screen and (max-width: 1200px) {
+  .importance {
+    flex-wrap: wrap;
+    .article {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      article {
+        padding: 0;
+        margin: 16px;
+      }
+    }
+
+  }
+
+  .threats {
+    flex-wrap: wrap;
+    .container {
+      width: 100%;
+    }
+
+    &__image {
+      width: 320px;
+      height: 320px;
+    }
+  }
+}
+

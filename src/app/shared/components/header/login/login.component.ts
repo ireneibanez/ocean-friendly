@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe(
       user => {
         this.userLogged = user;
-        console.log('llega el usuario al login');
       }
     )
   }
@@ -41,6 +40,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.dialog.open(FormRegisterComponent);
   }
 
+  closeSession() {
+    this.authService.token = null;
+    this.userLogged = null;
+  }
 }
 
 
