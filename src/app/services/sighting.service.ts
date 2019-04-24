@@ -121,212 +121,217 @@ export class SightingService {
     }
   };
 
-  markers: Marker[] = [
-    {
-      longitude: -5.700144,
-      latitude: 44.727501,
-      spp: 'turtle',
-      type: 'individuals',
-      name: 'Luís',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 1,
-      status: 'Caparazón en muy buen estado'
-    },
-    {
-      longitude: -14.770427,
-      latitude: 40.893333,
-      spp: 'tuna',
-      type: 'individuals',
-      name: 'Pepe',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 1,
-      status: 'Muy grande'
-    },
-    {
-      longitude: -14.337788,
-      latitude: 36.846606,
-      spp: 'whale',
-      type: 'individuals',
-      name: 'La pandilla feliz',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 3,
-      status: 'Grupo de ballenas que iban muy juntas'
-    },
-    {
-      longitude: -23.443281,
-      latitude: 15.406215,
-      spp: 'turtle',
-      type: 'individuals',
-      name: 'Las tortugas ninja',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 5,
-      status: 'Muy rápidas, casi no las ves'
-    },
-    {
-      longitude: -0.612442,
-      latitude: 37.710681,
-      spp: 'turtle',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: -16.894436,
-      latitude: 27.635168,
-      spp: 'turtle',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: 2.659747,
-      latitude: 39.255417,
-      spp: 'turtle',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '2019-04-17',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: 20.256259,
-      latitude: 38.709630,
-      spp: 'turtle',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: -90.219488,
-      latitude: 25.110005,
-      spp: 'tuna',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: 21.178576,
-      latitude: 35.297258,
-      spp: 'tuna',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: -74.481626,
-      latitude: 26.794279,
-      spp: 'tuna',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: -40.568458,
-      latitude: 36.566779,
-      spp: 'whale',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: -91.707920,
-      latitude: -11.642018,
-      spp: 'whale',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: 81.352197,
-      latitude: 0.720585,
-      spp: 'whale',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: 158.176738,
-      latitude: 1.634195,
-      spp: 'whale',
-      type: 'love',
-      name: '',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: ''
-    },
-    {
-      longitude: 8.087931,
-      latitude: 40.577512,
-      spp: 'turtle',
-      type: 'individuals',
-      name: 'Agustín',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: 'Es muy bello, tiene un color verde precioso'
-    },
-    {
-      longitude: -7.820738,
-      latitude: 48.007042,
-      spp: 'tuna',
-      type: 'individuals',
-      name: 'Antoñito',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: 'Parece muy fuerte, está to petao'
-    },
-    {
-      longitude: 2.891490,
-      latitude: 53.029540,
-      spp: 'whale',
-      type: 'individuals',
-      name: 'Renata',
-      picture: '',
-      createdAt: '',
-      numAnimals: 1,
-      status: 'Parece en buen estado'
-    }
-  ]
+  // markers: Marker[] = [
+  //   {
+  //     longitude: -5.700144,
+  //     latitude: 44.727501,
+  //     spp: 'turtle',
+  //     type: 'individuals',
+  //     name: 'Luís',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 1,
+  //     status: 'Caparazón en muy buen estado'
+  //   },
+  //   {
+  //     longitude: -14.770427,
+  //     latitude: 40.893333,
+  //     spp: 'tuna',
+  //     type: 'individuals',
+  //     name: 'Pepe',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 1,
+  //     status: 'Muy grande'
+  //   },
+  //   {
+  //     longitude: -14.337788,
+  //     latitude: 36.846606,
+  //     spp: 'whale',
+  //     type: 'individuals',
+  //     name: 'La pandilla feliz',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 3,
+  //     status: 'Grupo de ballenas que iban muy juntas'
+  //   },
+  //   {
+  //     longitude: -23.443281,
+  //     latitude: 15.406215,
+  //     spp: 'turtle',
+  //     type: 'individuals',
+  //     name: 'Las tortugas ninja',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 5,
+  //     status: 'Muy rápidas, casi no las ves'
+  //   },
+  //   {
+  //     longitude: -0.612442,
+  //     latitude: 37.710681,
+  //     spp: 'turtle',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: -16.894436,
+  //     latitude: 27.635168,
+  //     spp: 'turtle',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: 2.659747,
+  //     latitude: 39.255417,
+  //     spp: 'turtle',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '2019-04-17',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: 20.256259,
+  //     latitude: 38.709630,
+  //     spp: 'turtle',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: -90.219488,
+  //     latitude: 25.110005,
+  //     spp: 'tuna',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: 21.178576,
+  //     latitude: 35.297258,
+  //     spp: 'tuna',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: -74.481626,
+  //     latitude: 26.794279,
+  //     spp: 'tuna',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: -40.568458,
+  //     latitude: 36.566779,
+  //     spp: 'whale',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: -91.707920,
+  //     latitude: -11.642018,
+  //     spp: 'whale',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: 81.352197,
+  //     latitude: 0.720585,
+  //     spp: 'whale',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: 158.176738,
+  //     latitude: 1.634195,
+  //     spp: 'whale',
+  //     type: 'love',
+  //     name: '',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: ''
+  //   },
+  //   {
+  //     longitude: 8.087931,
+  //     latitude: 40.577512,
+  //     spp: 'turtle',
+  //     type: 'individuals',
+  //     name: 'Agustín',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: 'Es muy bello, tiene un color verde precioso'
+  //   },
+  //   {
+  //     longitude: -7.820738,
+  //     latitude: 48.007042,
+  //     spp: 'tuna',
+  //     type: 'individuals',
+  //     name: 'Antoñito',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: 'Parece muy fuerte, está to petao'
+  //   },
+  //   {
+  //     longitude: 2.891490,
+  //     latitude: 53.029540,
+  //     spp: 'whale',
+  //     type: 'individuals',
+  //     name: 'Renata',
+  //     picture: '',
+  //     createdAt: '',
+  //     numAnimals: 1,
+  //     status: 'Parece en buen estado'
+  //   }
+  // ]
+
+
 
   constructor(private http: HttpClient) {}
 
-  getSightings(options): Observable<object> {
-    //return of(this.markers);
-    return this.http.get(`${environment.apiOcean}/api/v1/ocean/sightings`);
+  getSightings(): Observable<object> {
+    return this.http.get(`${environment.apiOcean}/api/v1/ocean/sighting`);
+  }
+
+  getReproductionPlaces(): Observable<object> {
+    return this.http.get(`${environment.apiOcean}/api/v1/ocean/reproduction-places`);
   }
 
   getMySightings(): Observable<object> {
@@ -345,8 +350,8 @@ export class SightingService {
     return this.http.post(`${environment.apiOcean}/api/v1/ocean/sighting`, sighting);
   }
 
-  editSighting(sighting: Sigthing) {
-    return this.http.put(`${environment.apiOcean}/api/v1/ocean/sighting/`, sighting);
+  editSighting(sighting: Sigthing): Observable<object> {
+    return this.http.put(`${environment.apiOcean}/api/v1/ocean/sighting/${sighting._id}`, sighting);
   }
 
   deleteSighting(id) {

@@ -6,8 +6,11 @@ import { ReproductionPlacesInfoComponent } from '../map/reproduction-places-info
 import { SightingService } from 'src/app/services/sighting.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Sigthing } from 'src/app/model/sigthing.model';
+import { Marker } from 'src/app/model/marker.model';
+import { ReproductionPlace } from 'src/app/model/reproduction-place.model';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-map-box',
@@ -31,7 +34,8 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   playing = false;
 
-  markers:object[];
+  reproductionPlaces:ReproductionPlace[];
+  markers:Marker[];
   markerRoute = false;
   markerRouteData = {
     longitude: null,
@@ -45,27 +49,41 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   id = "hola"
 
   migrationRoutes;
-
+  initError: string;
   //TODO: ver para que se usa esto
   turtleLayer = null;
   tunaLayer= null;
+  userLogged;
 
   private markersSubscription: Subscription;
+  private repPlacesSubscription: Subscription;
 
-  constructor(public dialog: MatDialog, private sightingService: SightingService) {}
+  constructor(public dialog: MatDialog, private sightingService: SightingService, private authService: AuthService) {}
 
   ngOnInit() {
+
+    this.userLogged = this.authService.getUserLogged();
+    console.log(this.userLogged);
     this.migrationRoutes = this.sightingService.getMigrationRoutes();
 
-    this.markersSubscription = this.sightingService.getSightings(this.mapOptions).subscribe(
-      (markers: object[]) => {
-        this.markers = markers;
-        console.log(this.markers);
+    this.markersSubscription = this.sightingService.getSightings().subscribe(
+      (markers: Marker[]) => {
+        this.markers = this.applyFilters(markers);
       },
       (error: HttpErrorResponse) => {
-        // this.initError = 'Your places cannont be loaded. Please try again after few minutes.';
+        this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
       }
     );
+
+    this.repPlacesSubscription = this.sightingService.getReproductionPlaces().subscribe(
+      (markers: Marker[]) => {
+        this.reproductionPlaces = this.applyFilters(markers);
+        console.log(this.reproductionPlaces);
+      },
+      (error: HttpErrorResponse) => {
+        this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
+      }
+    )
   }
 
   openFormAnimals() {
@@ -96,8 +114,52 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   updateMapOptions($event) {
     console.log('llegan las opciones', $event);
-    this.id = `boream-${Date.now()}`
+    this.id = `boream-${Date.now()}`;
     this.mapOptions = $event;
+    this.markersSubscription = this.sightingService.getSightings().subscribe(
+      (markers: Marker[]) => {
+        this.markers = this.applyFilters(markers);
+      }
+    );
+    this.repPlacesSubscription = this.sightingService.getReproductionPlaces().subscribe(
+      (markers: Marker[]) => {
+        this.reproductionPlaces = this.applyFilters(markers);
+      },
+      (error: HttpErrorResponse) => {
+        this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
+      }
+    )
+  }
+
+  private applyFilters(markers: Marker[]): Marker[] {
+
+    console.log(markers, this.mapOptions);
+
+    return markers.filter((marker: Marker) => {
+
+      if (!this.mapOptions.tuna && marker.spp === 'tuna') {
+        return false;
+      }
+
+      if (!this.mapOptions.turtle && marker.spp === 'turtle') {
+        return false;
+      }
+
+      if (!this.mapOptions.whale && marker.spp === 'whale') {
+        return false;
+      }
+
+      if (!this.mapOptions.individuals && marker.type === 'individuals') {
+        return false;
+      }
+
+      if (!this.mapOptions.reproductionPlaces && marker.type === 'love') {
+        return false;
+      }
+
+      return true;
+
+    });
   }
 
   playMigrationRoute() {
@@ -142,6 +204,9 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.markersSubscription) {
       this.markersSubscription.unsubscribe();
+    }
+    if (this.repPlacesSubscription) {
+      this.repPlacesSubscription.unsubscribe();
     }
   }
 }

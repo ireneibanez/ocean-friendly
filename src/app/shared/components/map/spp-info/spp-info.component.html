@@ -1,9 +1,9 @@
 <div class="modal__info-spps">
   <button mat-dialog-close type="button" class="btn-close">&times;</button>
-  <h1>{{ sigthing.spp }}</h1>
+  <h1>{{ sigthing.name | titlecase }}</h1>
   <div class="modal__info-spss__name" *ngIf="sigthing.name">
-    <h2>Nombre:</h2>
-    <p>{{ sigthing.name }}</p>
+    <h2>Especie:</h2>
+    <p>{{ sigthing.spp | spp  }}</p>
   </div>
   <div class="modal__info-spss__num-animals" *ngIf="sigthing.numAnimals">
     <h2>Número de individuos:</h2>
@@ -11,7 +11,7 @@
   </div>
   <div class="modal__info-spss__status" *ngIf="sigthing.status">
     <h2>Estado:</h2>
-    <p>{{ sigthing.status }}</p>
+    <p>{{ sigthing.status | status }}</p>
   </div>
   <div class="modal__info-spss__latitude" *ngIf="sigthing.latitude">
     <h2>Latitud:</h2>
@@ -23,7 +23,7 @@
   </div>
   <div class="modal__info-spss__created-at" *ngIf="sigthing.createdAt">
     <h2>Fecha del avistamiento:</h2>
-    <p>{{ sigthing.createdAt }}</p>
+    <p>{{ sigthing.createdAt | date: 'dd-MM-yyyy' }}</p>
   </div>
   <div *ngIf="sigthing.picture" class="picture-container">
     <img src="{{ picture }}" alt="Imagen">

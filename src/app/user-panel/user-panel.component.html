@@ -14,10 +14,11 @@
     </thead>
     <tbody role="rowgroup">
       <tr role="row" *ngFor="let data of mySightings">
-        <td role="cell" >{{data.spp | spp}} -- {{data._id}}</td>
+        <!-- <td role="cell" >{{data._id }}</td> -->
+        <td role="cell" >{{data.spp | spp}}</td>
         <td role="cell">{{data.name}}</td>
         <td role="cell">{{data.numAnimals}}</td>
-        <td role="cell">{{data.createdAt}}</td>
+        <td role="cell">{{data.createdAt | date: 'dd-MM-yyyy' }}</td>
         <td role="cell">{{data.status | status}}</td>
         <td role="cell">{{data.latitude}}</td>
         <td role="cell">{{data.longitude}}</td>

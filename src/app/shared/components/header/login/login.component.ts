@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe(
       user => {
+        console.log('tengo usuario', user);
         this.userLogged = user;
       }
     )

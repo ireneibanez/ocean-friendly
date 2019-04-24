@@ -11,7 +11,11 @@ export class AuthService {
   private userLoggedSubject: Subject<User> = new Subject<User>();
   public userLoggedObservable: Observable<User> = this.userLoggedSubject.asObservable()
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // if (this.token) {
+    //   this.getUser().then(data => true);
+    // }
+  }
 
   set token(value: string) {
     window.localStorage.token = value;

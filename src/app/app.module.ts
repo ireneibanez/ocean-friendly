@@ -40,6 +40,7 @@ import { TokenInterceptor } from './services/token.interceptor';
 import { LoginGuard } from '../app/guards/login.guard';
 import { SppPipe } from './pipes/spp.pipe';
 import { StatusPipe } from './pipes/status.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { StatusPipe } from './pipes/status.pipe';
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
+    RouterModule,
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })

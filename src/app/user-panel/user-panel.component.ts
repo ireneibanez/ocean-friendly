@@ -38,10 +38,7 @@ export class UserPanelComponent implements OnInit, OnDestroy {
 
   delete(data){
     this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
-      let index = this.mySightings.indexOf(data);
-      if (index > -1) {
-        this.mySightings.splice(index, 1);
-      }
+      this.getMySightings();
     });
   }
 
@@ -53,27 +50,21 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(
       (sightingUpdated: Sigthing) => {
         sightingUpdated._id = sighting._id;
-        this.edit(sightingUpdated)
+        this.edit(sightingUpdated);
       }
     );
   }
 
   edit (sighting: Sigthing) {
     this.editSightingSubscription = this.sightingService.editSighting(sighting).subscribe(()=>{
-      console.log('Edit ok');
+      this.getMySightings();
     });
-    // if (!data) {
-    //   return;
-    // }
+  }
 
-    // let finded = dataSource.findIndex((dataSourceItem) => (
-    //   dataSourceItem.name === data.name
-    // ));
-    // if (finded >= 0) {
-    //   dataSource.splice(finded, 1, data);
-    // } else {
-    //   this.add(data);
-    // }
+  getMySightings () {
+    this.getSightingsSubscription = this.sightingService.getMySightings().subscribe((sightings: Sigthing[])=>{
+       this.mySightings = sightings;
+    });
   }
 
   add (data) {

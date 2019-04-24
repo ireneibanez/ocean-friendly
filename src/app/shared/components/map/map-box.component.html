@@ -19,20 +19,34 @@
         'turtle-love': marker.type === 'love' && marker.spp === 'turtle',
         'whale-love': marker.type === 'love' && marker.spp === 'whale',
         'tuna-love': marker.type === 'love' && marker.spp === 'tuna',
-        'turtle-star': marker.type === 'individuals' && marker.spp === 'turtle',
-        'whale-star': marker.type === 'individuals' && marker.spp === 'whale',
-        'tuna-star': marker.type === 'individuals' && marker.spp === 'tuna',
+        'turtle-star': marker.type === 'individuals' && marker.spp === 'turtle' && mapOptions.mySpecies && userLogged && userLogged.id === marker.user,
+        'whale-star': marker.type === 'individuals' && marker.spp === 'whale' && mapOptions.mySpecies && userLogged && userLogged.id === marker.user,
+        'tuna-star': marker.type === 'individuals' && marker.spp === 'tuna' && mapOptions.mySpecies && userLogged && userLogged.id === marker.user,
         'turtle': marker.type === 'individuals' && marker.spp === 'turtle',
         'whale': marker.type === 'individuals' && marker.spp === 'whale',
         'tuna': marker.type === 'individuals' && marker.spp === 'tuna'
       }"
+      data-1=""
       class="marker {{ marker.class }}" (click)="openModal(marker)">
-          <div class="tooltip-text" *ngIf="marker.text && marker.text.length > 0">
-            {{ marker.text }}
+          <div class="tooltip-text" *ngIf="marker.name && marker.name.length > 0">
+            {{ marker.name | titlecase }}
           </div>
       </div>
     </mgl-marker>
 
+    <mgl-marker *ngFor="let marker of reproductionPlaces" [lngLat]="[marker.longitude, marker.latitude]">
+      <div
+      [ngClass]="{
+        'turtle-love': marker.type === 'love' && marker.spp === 'turtle',
+        'whale-love': marker.type === 'love' && marker.spp === 'whale',
+        'tuna-love': marker.type === 'love' && marker.spp === 'tuna'
+      }"
+      class="marker {{ marker.class }}" (click)="openModal(marker)">
+          <div class="tooltip-text" *ngIf="marker.name && marker.name.length > 0">
+            {{ marker.name }}
+          </div>
+      </div>
+    </mgl-marker>
   <mgl-marker
     [lngLat]="[markerRouteData.longitude, markerRouteData.latitude]"
     >

@@ -7,5 +7,8 @@ export interface ReproductionPlace {
     longitude: number,
     picture?: string,
     createdAt?: any,
-    type: string
+    user: string,
+    type: string,
+    country?: string,
+    avg?: number
 }

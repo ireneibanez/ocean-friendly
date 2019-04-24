@@ -2,13 +2,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user.model';
+import { SightingService } from '../../../services/sighting.service';
+
 
 @Component({
   selector: 'app-menu-btn',
   templateUrl: './menu-btn.component.html',
   styleUrls: ['./menu-btn.component.scss']
 })
-export class MenuBtnComponent implements OnInit {
+export class MenuBtnComponent implements OnInit  {
 
   @Output() mapOptionsEmitter = new EventEmitter();
   status: boolean = false;
@@ -32,7 +34,7 @@ export class MenuBtnComponent implements OnInit {
   ngOnInit() {
     this.initValues();
     this.userLogged = this.authService.getUserLogged();
-    console.log('on init menu btn', this.userLogged);
+    this.sendMapOptions();
   }
 
   toggleVisibilityMenuBtns() {
@@ -48,11 +50,11 @@ export class MenuBtnComponent implements OnInit {
   }
 
   initValues() {
-    this.tuna = false;
-    this.whale = false;
-    this.turtle = false;
-    this.individuals = false;
-    this.reproductionPlaces = false;
+    this.tuna = true;
+    this.whale = true;
+    this.turtle = true;
+    this.individuals = true;
+    this.reproductionPlaces = true;
     this.mySpecies = false;
     this.tunaMigrationSwitch = false;
     this.whaleMigrationSwitch = false;
@@ -74,4 +76,6 @@ export class MenuBtnComponent implements OnInit {
 
     this.mapOptionsEmitter.emit(config);
   }
+
+
 }

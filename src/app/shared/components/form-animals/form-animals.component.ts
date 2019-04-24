@@ -25,7 +25,7 @@ export class FormAnimalsComponent implements OnInit {
 
   status: object [] = [{
     key: 'Excelente',
-    value: 'excelent'
+    value: 'excellent'
   },
   {
       key: 'Buen estado',

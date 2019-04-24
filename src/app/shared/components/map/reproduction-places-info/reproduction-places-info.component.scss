@@ -26,6 +26,7 @@
   }
   p {
       @include titles;
+      margin-top: 8px;
 
   }
   div, div + div {

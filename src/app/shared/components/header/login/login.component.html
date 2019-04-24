@@ -5,6 +5,6 @@
 <mat-menu #menu="matMenu" yPosition="below" xPosition="before" class="login-menu">
   <button mat-menu-item (click)="openFormLogin()" *ngIf="!userLogged">Login</button>
   <button mat-menu-item (click)="openFormRegister()" *ngIf="!userLogged">Regístrate</button>
-  <button mat-menu-item routerlink="panel" *ngIf="userLogged">Mis avistamientos</button>
+  <button mat-menu-item routerLink="/panel" *ngIf="userLogged">Mis avistamientos</button>
   <button mat-menu-item (click)="closeSession()" *ngIf="userLogged">Cerrar sesión</button>
 </mat-menu>

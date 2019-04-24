@@ -8,5 +8,8 @@ export interface Sigthing {
     picture?: string,
     createdAt: any,
     type: string,
-    _id?: string
+    user: string,
+    _id?: string,
+    country?: string,
+    avg?: number
 }
