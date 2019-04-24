@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { of, Observable } from 'rxjs';
 import { Marker } from '../model/marker.model';
+import { Sigthing } from '../model/sigthing.model';
 
 const apiOcean = environment.apiOcean;
 
@@ -10,7 +11,7 @@ const apiOcean = environment.apiOcean;
   providedIn: 'root'
 })
 
-export class MarkersService {
+export class SightingService {
 
   routeTurtleSource = {
     'type': 'geojson',
@@ -128,7 +129,7 @@ export class MarkersService {
       type: 'individuals',
       name: 'Luís',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 1,
       status: 'Caparazón en muy buen estado'
     },
@@ -139,7 +140,7 @@ export class MarkersService {
       type: 'individuals',
       name: 'Pepe',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 1,
       status: 'Muy grande'
     },
@@ -150,7 +151,7 @@ export class MarkersService {
       type: 'individuals',
       name: 'La pandilla feliz',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 3,
       status: 'Grupo de ballenas que iban muy juntas'
     },
@@ -161,7 +162,7 @@ export class MarkersService {
       type: 'individuals',
       name: 'Las tortugas ninja',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 5,
       status: 'Muy rápidas, casi no las ves'
     },
@@ -172,7 +173,7 @@ export class MarkersService {
       type: 'love',
       name: '',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 1,
       status: ''
     },
@@ -183,7 +184,7 @@ export class MarkersService {
       type: 'love',
       name: '',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 1,
       status: ''
     },
@@ -194,7 +195,7 @@ export class MarkersService {
       type: 'love',
       name: '',
       picture: '',
-      createdAt: '',
+      createdAt: '2019-04-17',
       numAnimals: 1,
       status: ''
     },
@@ -321,11 +322,15 @@ export class MarkersService {
     }
   ]
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  fetchMarkers(options): Observable<object> {
-    return of(this.markers);
-    // return this.httpClient.get(apiOcean + '/sighting');
+  getSightings(options): Observable<object> {
+    //return of(this.markers);
+    return this.http.get(`${environment.apiOcean}/api/v1/ocean/sightings`);
+  }
+
+  getMySightings(): Observable<object> {
+    return this.http.get(`${environment.apiOcean}/api/v1/ocean/my-sightings`);
   }
 
   getMigrationRoutes(): object {
@@ -334,5 +339,17 @@ export class MarkersService {
       whale: this.routeWhaleSource,
       turtle: this.routeTurtleSource
     };
+  }
+
+  createSighting(sighting: Sigthing): Observable<object> {
+    return this.http.post(`${environment.apiOcean}/api/v1/ocean/sighting`, sighting);
+  }
+
+  editSighting(sighting: Sigthing) {
+    return this.http.put(`${environment.apiOcean}/api/v1/ocean/sighting/`, sighting);
+  }
+
+  deleteSighting(id) {
+    return this.http.delete(`${environment.apiOcean}/api/v1/ocean/sighting/${id}`);
   }
 }

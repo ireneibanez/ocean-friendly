@@ -2,12 +2,13 @@
 @import "../../../../../scss/partials/mixins";
 
 .login-btn, .mat-button {
-  position: absolute;
+  background-color: transparent;
+  // position: absolute;
   right: 0;
   top: 0;
 }
 .login-btn__avatar {
-  position: absolute;
+  // position: absolute;
   right: 16px;
   top:8px;
   height: 40px;

@@ -23,6 +23,22 @@ export class FormAnimalsComponent implements OnInit {
       value: 'tuna',
   }];
 
+  status: object [] = [{
+    key: 'Excelente',
+    value: 'excelent'
+  },
+  {
+      key: 'Buen estado',
+      value: 'good',
+  },
+  {
+      key: 'Mal estado',
+      value: 'bad',
+  },
+  {
+      key: 'Sin vida',
+      value: 'dead',
+  }];
 
   form: FormGroup;
   selectedItemForEdit;
@@ -47,7 +63,7 @@ export class FormAnimalsComponent implements OnInit {
       spp:[this.selectedItemForEdit ? this.selectedItemForEdit.spp: 'select', Validators.required],
       name:[this.selectedItemForEdit ? this.selectedItemForEdit.name: ''],
       numAnimals: [this.selectedItemForEdit ? this.selectedItemForEdit.numAnimals: '', Validators.required],
-      status: [this.selectedItemForEdit ? this.selectedItemForEdit.status: '', Validators.required],
+      status: [this.selectedItemForEdit ? this.selectedItemForEdit.status: 'select', Validators.required],
       createdAt: [this.selectedItemForEdit ? this.selectedItemForEdit.createdAt: '', Validators.required],
       latitude: [this.selectedItemForEdit ? this.selectedItemForEdit.latitude: '', Validators.required],
       longitude: [this.selectedItemForEdit ? this.selectedItemForEdit.longitude: '', Validators.required],

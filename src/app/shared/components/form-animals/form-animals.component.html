@@ -19,8 +19,15 @@
   </div>
   <div class="form-animals__status">
       <label for="status">Estado</label>
-      <input type="text" name="status" placeholder="" formControlName="status" id="status">
-      <span *ngIf="form?.controls.status.errors?.required">Campo requerido</span>
+      <select name="spp" id="spp-found" class="form-animals__spp" formControlName="status">
+        <option value="select">Selecciona el estado</option>
+        <option value="excelent">Excelente</option>
+        <option value="good">Buen estado</option>
+        <option value="bad">Mal estado</option>
+        <option value="dead">Sin vida</option>
+      </select>
+      <!-- <input type="text" name="status" placeholder="" formControlName="status" id="status">
+      <span *ngIf="form?.controls.status.errors?.required">Campo requerido</span> -->
   </div>
 
   <div class="form-animals__date">

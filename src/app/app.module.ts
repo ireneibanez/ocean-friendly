@@ -33,11 +33,13 @@ import { ReproductionPlacesInfoComponent } from '../app/shared/components/map/re
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
 import { ClimateChangeService } from '../app/services/climateChange.service';
-import { MarkersService } from './services/markers.service';
+import { SightingService } from './services/sighting.service';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor } from './services/token.interceptor';
 
 import { LoginGuard } from '../app/guards/login.guard';
+import { SppPipe } from './pipes/spp.pipe';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { LoginGuard } from '../app/guards/login.guard';
     SppInfoComponent,
     ReproductionPlacesInfoComponent,
     UserPanelComponent,
+    SppPipe,
+    StatusPipe
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,7 @@ import { LoginGuard } from '../app/guards/login.guard';
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })
   ],
-  providers: [FormBuilder, ClimateChangeService, MarkersService, AuthService, LoginGuard, {
+  providers: [FormBuilder, ClimateChangeService, SightingService, AuthService, LoginGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

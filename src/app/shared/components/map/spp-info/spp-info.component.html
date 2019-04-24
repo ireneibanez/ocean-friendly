@@ -1,32 +1,31 @@
-
 <div class="modal__info-spps">
   <button mat-dialog-close type="button" class="btn-close">&times;</button>
-  <h1>{{ sigthseen.spp }}</h1>
-  <div class="modal__info-spss__name" *ngIf="sigthseen.name">
+  <h1>{{ sigthing.spp }}</h1>
+  <div class="modal__info-spss__name" *ngIf="sigthing.name">
     <h2>Nombre:</h2>
-    <p>{{ sigthseen.name }}</p>
+    <p>{{ sigthing.name }}</p>
   </div>
-  <div class="modal__info-spss__num-animals" *ngIf="sigthseen.numAnimals">
+  <div class="modal__info-spss__num-animals" *ngIf="sigthing.numAnimals">
     <h2>Número de individuos:</h2>
-    <p>{{ sigthseen.numAnimals }}</p>
+    <p>{{ sigthing.numAnimals }}</p>
   </div>
-  <div class="modal__info-spss__status" *ngIf="sigthseen.status">
+  <div class="modal__info-spss__status" *ngIf="sigthing.status">
     <h2>Estado:</h2>
-    <p>{{ sigthseen.status }}</p>
+    <p>{{ sigthing.status }}</p>
   </div>
-  <div class="modal__info-spss__latitude" *ngIf="sigthseen.latitude">
+  <div class="modal__info-spss__latitude" *ngIf="sigthing.latitude">
     <h2>Latitud:</h2>
-    <p>{{ sigthseen.latitude }}</p>
+    <p>{{ sigthing.latitude }}</p>
   </div>
-  <div class="modal__info-spss__longitude" *ngIf="sigthseen.longitude">
+  <div class="modal__info-spss__longitude" *ngIf="sigthing.longitude">
     <h2>Longitud:</h2>
-    <p>{{ sigthseen.longitude }}</p>
+    <p>{{ sigthing.longitude }}</p>
   </div>
-  <div class="modal__info-spss__created-at" *ngIf="sigthseen.createdAt">
+  <div class="modal__info-spss__created-at" *ngIf="sigthing.createdAt">
     <h2>Fecha del avistamiento:</h2>
-    <p>{{ sigthseen.createdAt }}</p>
+    <p>{{ sigthing.createdAt }}</p>
   </div>
-  <div *ngIf="sigthseen.picture" class="picture-container">
+  <div *ngIf="sigthing.picture" class="picture-container">
     <img src="{{ picture }}" alt="Imagen">
   </div>
 </div>

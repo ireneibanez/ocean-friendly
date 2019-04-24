@@ -13,5 +13,6 @@ export class SppInfoComponent {
 
   constructor(public dialogRef: MatDialog, @Inject(MAT_DIALOG_DATA) data: Sigthing) {
     this.sigthing = data;
+    console.log(this.sigthing);
   }
 }

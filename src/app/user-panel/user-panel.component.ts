@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { FormAnimalsComponent } from '../shared/components/form-animals/form-animals.component';
 import { DataSource } from '@angular/cdk/table';
+import { SightingService } from '../services/sighting.service';
+import { Subscription } from 'rxjs';
+import { Sigthing } from '../model/sigthing.model';
 
 @Component({
   selector: 'app-user-panel',
   templateUrl: './user-panel.component.html',
   styleUrls: ['./user-panel.component.scss']
 })
-export class UserPanelComponent implements OnInit {
+export class UserPanelComponent implements OnInit, OnDestroy {
 
   spp: string;
   name: string;
@@ -20,83 +23,72 @@ export class UserPanelComponent implements OnInit {
 
   displayedColumns: any[] = ['spp', 'name', 'number', 'status', 'date', 'latitude', 'longitude'];
   dataSource: any[];
+  mySightings: Sigthing[];
+  getSightingsSubscription: Subscription;
+  deleteSightingSubscription: Subscription;
+  editSightingSubscription: Subscription;
 
-  constructor( public dialog: MatDialog ) { }
+  constructor(public dialog: MatDialog, private sightingService: SightingService) { }
 
   ngOnInit() {
-    this.dataSource = [
-      {
-        spp: 'whale',
-        name: 'Juanito',
-        numAnimals: '1',
-        status: 'Good',
-        createdAt: '05-01-2018',
-        latitude: 'LAT',
-        longitude: 'LONG'
-      },
-      {
-        spp: 'turtle',
-        name: 'Pepi',
-        numAnimals: '1',
-        status: 'Bad',
-        createdAt: '01-02-2015',
-        latitude: 'LAT',
-        longitude: 'LONG'
-      },
-      {
-        spp: 'tuna',
-        name: 'Tartar',
-        numAnimals: '2',
-        status: 'Buen estado',
-        createdAt: '01-09-2016',
-        latitude: 'LAT',
-        longitude: 'LONG'
-      },
-    ];
+    this.getSightingsSubscription = this.sightingService.getMySightings().subscribe((sightings: Sigthing[])=>{
+      this.mySightings = sightings;
+    });
   }
 
   delete(data){
-    let index = this.dataSource.indexOf(data);
-    if (index > -1) {
-      this.dataSource.splice(index, 1);
-    }
-    console.log(data);
-    return data;
+    this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
+      let index = this.mySightings.indexOf(data);
+      if (index > -1) {
+        this.mySightings.splice(index, 1);
+      }
+    });
   }
 
-  openFormAnimals(data) {
-    this.openDialog(data);
-  }
-
-  openDialog(data) {
-
+  openFormAnimals(sighting: Sigthing) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = data;
+    dialogConfig.data = sighting;
     const dialogRef = this.dialog.open(FormAnimalsComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-        data => this.edit (this.dataSource, data)
+      (sightingUpdated: Sigthing) => {
+        sightingUpdated._id = sighting._id;
+        this.edit(sightingUpdated)
+      }
     );
   }
 
-  edit (dataSource, data) {
+  edit (sighting: Sigthing) {
+    this.editSightingSubscription = this.sightingService.editSighting(sighting).subscribe(()=>{
+      console.log('Edit ok');
+    });
+    // if (!data) {
+    //   return;
+    // }
 
-    if (!data) {
-      return;
-    }
-
-    let finded = dataSource.findIndex((dataSourceItem) => (
-      dataSourceItem.name === data.name
-    ));
-    if (finded >= 0) {
-      dataSource.splice(finded, 1, data);
-    } else {
-      this.add(data);
-    }
+    // let finded = dataSource.findIndex((dataSourceItem) => (
+    //   dataSourceItem.name === data.name
+    // ));
+    // if (finded >= 0) {
+    //   dataSource.splice(finded, 1, data);
+    // } else {
+    //   this.add(data);
+    // }
   }
 
   add (data) {
     this.dataSource.push(data);
   }
 
+  ngOnDestroy() {
+    if (this.getSightingsSubscription) {
+      this.getSightingsSubscription.unsubscribe();
+    }
+    if (this.deleteSightingSubscription) {
+      this.deleteSightingSubscription.unsubscribe();
+    }
+    if (this.editSightingSubscription) {
+      this.editSightingSubscription.unsubscribe();
+    }
+  }
 }

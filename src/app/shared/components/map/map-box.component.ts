@@ -3,10 +3,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { FormAnimalsComponent } from '../form-animals/form-animals.component';
 import { SppInfoComponent } from '../map/spp-info/spp-info.component';
 import { ReproductionPlacesInfoComponent } from '../map/reproduction-places-info/reproduction-places-info.component';
-import { MarkersService } from 'src/app/services/markers.service';
+import { SightingService } from 'src/app/services/sighting.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { Sigthing } from 'src/app/model/sigthing.model';
 
 @Component({
   selector: 'app-map-box',
@@ -51,12 +52,12 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   private markersSubscription: Subscription;
 
-  constructor(public dialog: MatDialog, private markerService: MarkersService) {}
+  constructor(public dialog: MatDialog, private sightingService: SightingService) {}
 
   ngOnInit() {
-    this.migrationRoutes = this.markerService.getMigrationRoutes();
+    this.migrationRoutes = this.sightingService.getMigrationRoutes();
 
-    this.markersSubscription = this.markerService.fetchMarkers(this.mapOptions).subscribe(
+    this.markersSubscription = this.sightingService.getSightings(this.mapOptions).subscribe(
       (markers: object[]) => {
         this.markers = markers;
         console.log(this.markers);
@@ -68,25 +69,21 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   }
 
   openFormAnimals() {
-    const dialogConfig = new MatDialogConfig();
-    
-    //TODO: ver como c******* decirle al p*** modal que haga scroll :)
 
-    this.dialog.open(FormAnimalsComponent,dialogConfig);
+    const dialogRef = this.dialog.open(FormAnimalsComponent);
+
+    dialogRef.afterClosed().subscribe(
+      (data: Sigthing) => {
+        this.sightingService.createSighting(data).subscribe(()=>{
+          console.log('se ha creado correctamente');
+        });
+      }
+    );
   }
 
   openModal(marker) {
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.data = {
-    //   sppName: 'Agustín',
-    //   place: 'Maldivas',
-    //   weight: 52,
-    //   marks: 'anillos laterales',
-    //   status: 'buen estado',
-    //   picture: 'https://tusreptiles.org/wp-content/uploads/2018/07/1-Tortuga-e1532314986312.jpg'
-    // };
 
-    //TODO: uncomment when  
     dialogConfig.data = marker;
 
     if (marker.type === 'love') {

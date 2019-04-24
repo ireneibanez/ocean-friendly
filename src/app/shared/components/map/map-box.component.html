@@ -15,16 +15,16 @@
 
   <mgl-marker *ngFor="let marker of markers" [lngLat]="[marker.longitude, marker.latitude]">
       <div
-      [ngClass]="{ 
+      [ngClass]="{
         'turtle-love': marker.type === 'love' && marker.spp === 'turtle',
         'whale-love': marker.type === 'love' && marker.spp === 'whale',
         'tuna-love': marker.type === 'love' && marker.spp === 'tuna',
-        'turtle-star': marker.type === 'individuals' && marker.spp === 'turtle' && marker.mine === true,
-        'whale-star': marker.type === 'individuals' && marker.spp === 'whale' && marker.mine === true,
-        'tuna-star': marker.type === 'individuals' && marker.spp === 'tuna' && marker.mine === true,
-        'turtle': marker.type === 'individuals' && marker.spp === 'turtle' && marker.mine === false,
-        'whale': marker.type === 'individuals' && marker.spp === 'whale' && marker.mine === false,
-        'tuna': marker.type === 'individuals' && marker.spp === 'tuna' && marker.mine === false
+        'turtle-star': marker.type === 'individuals' && marker.spp === 'turtle',
+        'whale-star': marker.type === 'individuals' && marker.spp === 'whale',
+        'tuna-star': marker.type === 'individuals' && marker.spp === 'tuna',
+        'turtle': marker.type === 'individuals' && marker.spp === 'turtle',
+        'whale': marker.type === 'individuals' && marker.spp === 'whale',
+        'tuna': marker.type === 'individuals' && marker.spp === 'tuna'
       }"
       class="marker {{ marker.class }}" (click)="openModal(marker)">
           <div class="tooltip-text" *ngIf="marker.text && marker.text.length > 0">
