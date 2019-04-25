@@ -112,18 +112,23 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   }
 
 
-  updateMapOptions($event) {
+  async updateMapOptions($event) {
     console.log('llegan las opciones', $event);
     this.id = `boream-${Date.now()}`;
     this.mapOptions = $event;
-    this.markersSubscription = this.sightingService.getSightings().subscribe(
+    debugger
+    this.markersSubscription = await this.sightingService.getSightings().subscribe(
       (markers: Marker[]) => {
+        debugger
         this.markers = this.applyFilters(markers);
+        console.log(this.markers);
       }
     );
-    this.repPlacesSubscription = this.sightingService.getReproductionPlaces().subscribe(
+    this.repPlacesSubscription = await this.sightingService.getReproductionPlaces().subscribe(
       (markers: Marker[]) => {
+        debugger;
         this.reproductionPlaces = this.applyFilters(markers);
+        console.log(this.reproductionPlaces);
       },
       (error: HttpErrorResponse) => {
         this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';

@@ -42,9 +42,9 @@
         'tuna-love': marker.type === 'love' && marker.spp === 'tuna'
       }"
       class="marker {{ marker.class }}" (click)="openModal(marker)">
-          <div class="tooltip-text" *ngIf="marker.name && marker.name.length > 0">
+          <!-- <div class="tooltip-text" *ngIf="marker.name && marker.name.length > 0">
             {{ marker.name }}
-          </div>
+          </div> -->
       </div>
     </mgl-marker>
   <mgl-marker

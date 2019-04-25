@@ -1,11 +1,20 @@
 <div class="modal__info-places">
   <button mat-dialog-close type="button" class="btn-close">&times;</button>
   <div class="modal__info-places__data">
-      <h2>Lugar:
-        <p>{{ name }} ({{ country }})</p>
-      </h2>
+    <h2>Lugar:</h2>
+    <span>{{ name }} ({{ country }})</span>
   </div>
   <div *ngIf="picture" class="picture-container">
     <img src="assets/images/places/{{ picture }}" alt="Imagen">
+  </div>
+  <div class="climate">
+    <div class="climate__actual">
+      <h2>Temperatura actual: </h2>
+      <span> {{ avg }} ºC</span>
+    </div>
+    <div class="climate__future">
+      <h2>Temperatura 2030: </h2>
+      <span> {{ avg }} ºC</span>
+    </div>
   </div>
 </div>
