@@ -58,12 +58,14 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   private markersSubscription: Subscription;
   private repPlacesSubscription: Subscription;
 
-  constructor(public dialog: MatDialog, private sightingService: SightingService, private authService: AuthService) {}
+  constructor(public dialog: MatDialog, private sightingService: SightingService, private authService: AuthService) {
+
+    console.log(this.userLogged);
+  }
 
   ngOnInit() {
 
     this.userLogged = this.authService.getUserLogged();
-    console.log(this.userLogged);
     this.migrationRoutes = this.sightingService.getMigrationRoutes();
 
     this.markersSubscription = this.sightingService.getSightings().subscribe(
@@ -78,7 +80,6 @@ export class MapBoxComponent implements OnInit, OnDestroy {
     this.repPlacesSubscription = this.sightingService.getReproductionPlaces().subscribe(
       (markers: Marker[]) => {
         this.reproductionPlaces = this.applyFilters(markers);
-        console.log(this.reproductionPlaces);
       },
       (error: HttpErrorResponse) => {
         this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
@@ -112,23 +113,17 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   }
 
 
-  async updateMapOptions($event) {
-    console.log('llegan las opciones', $event);
+  updateMapOptions($event) {
     this.id = `boream-${Date.now()}`;
     this.mapOptions = $event;
-    debugger
-    this.markersSubscription = await this.sightingService.getSightings().subscribe(
+    this.markersSubscription = this.sightingService.getSightings().subscribe(
       (markers: Marker[]) => {
-        debugger
         this.markers = this.applyFilters(markers);
-        console.log(this.markers);
       }
     );
-    this.repPlacesSubscription = await this.sightingService.getReproductionPlaces().subscribe(
+    this.repPlacesSubscription = this.sightingService.getReproductionPlaces().subscribe(
       (markers: Marker[]) => {
-        debugger;
         this.reproductionPlaces = this.applyFilters(markers);
-        console.log(this.reproductionPlaces);
       },
       (error: HttpErrorResponse) => {
         this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
@@ -137,8 +132,6 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   }
 
   private applyFilters(markers: Marker[]): Marker[] {
-
-    console.log(markers, this.mapOptions);
 
     return markers.filter((marker: Marker) => {
 
@@ -154,7 +147,7 @@ export class MapBoxComponent implements OnInit, OnDestroy {
         return false;
       }
 
-      if (!this.mapOptions.individuals && marker.type === 'individuals') {
+      if (!this.mapOptions.individuals && marker.type === 'individuals' && !this.mapOptions.mySpecies && marker.status !== 'dead') {
         return false;
       }
 

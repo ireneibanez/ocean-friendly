@@ -26,7 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormBuilder, ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MenuBtnComponent } from './shared/components/menu-btns/menu-btn.component';
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
 import { CanvasChartComponent } from '../app/shared/components/canvas-chart/canvas-chart.component';
 import { SppInfoComponent } from '../app/shared/components/map/spp-info/spp-info.component';
 import { ReproductionPlacesInfoComponent } from '../app/shared/components/map/reproduction-places-info/reproduction-places-info.component';
@@ -81,11 +81,12 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     HttpClientModule,
     RouterModule,
+    HttpClientJsonpModule,
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoiY29ybmV0byIsImEiOiJjanJiMHB1bGkwOHRnNDludjhqazZvdWkwIn0.IigkRrS-arA3P8Jcvqrxcg',
     })
   ],
-  providers: [FormBuilder, ClimateChangeService, SightingService, AuthService, LoginGuard, {
+  providers: [FormBuilder, ClimateChangeService, SightingService, LoginGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

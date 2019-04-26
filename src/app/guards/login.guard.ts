@@ -15,11 +15,11 @@ export class LoginGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<any> {
 
-    if (this.authService.token) {
-      return this.authService.getUser().then(data => true);
-    } else {
-      this.redirect ('login');
-      return false;
+    if (this.authService.getUserLogged()) {
+      return true;
     }
+
+    this.redirect('home');
+    return false;
   }
 }

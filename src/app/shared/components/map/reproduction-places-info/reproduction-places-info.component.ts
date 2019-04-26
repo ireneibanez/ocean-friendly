@@ -14,6 +14,7 @@ export class ReproductionPlacesInfoComponent implements OnInit {
   name: string;
   picture: string;
   avg: number;
+  avf: number;
   futureAvg: number;
   country: string;
 
@@ -30,12 +31,15 @@ export class ReproductionPlacesInfoComponent implements OnInit {
     if (data && data.avg) {
       this.avg = data.avg;
     }
+    if (data && data.avf) {
+      this.avf = data.avf;
+    }
   }
 
   async ngOnInit() {
     if (this.country) {
-      const result = await this.http.get(`${environment.apiCC}/2020/2039/${this.country}`).toPromise();
-      console.log(result);
+      const result = await this.http.jsonp(`${environment.apiCC}/2020/2039/${this.country}`, 'callback').toPromise();
+      this.avf = Math.round(result[7].annualData*10)/10;
     }
   }
 

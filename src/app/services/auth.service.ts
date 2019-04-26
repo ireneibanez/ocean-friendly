@@ -4,18 +4,16 @@ import { HttpClient } from "@angular/common/http";
 import { Subject, Observable } from 'rxjs';
 import { User } from '../model/user.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   user: any;
   private userLoggedSubject: Subject<User> = new Subject<User>();
   public userLoggedObservable: Observable<User> = this.userLoggedSubject.asObservable()
 
-  constructor(private http: HttpClient) {
-    // if (this.token) {
-    //   this.getUser().then(data => true);
-    // }
-  }
+  constructor(private http: HttpClient) { }
 
   set token(value: string) {
     window.localStorage.token = value;
