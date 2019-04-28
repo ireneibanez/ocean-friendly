@@ -153,6 +153,10 @@
       .icon-player {
         width: 40px;
         fill: var(--color-white);
+        color: var(--color-white);
+      }
+      & + button {
+        margin-left: 16px;
       }
     }
   }

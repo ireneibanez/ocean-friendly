@@ -33,7 +33,7 @@ export class MapBoxComponent implements OnInit, OnDestroy {
     reproductionPlaces: false,
     death: false
   };
-
+  mapOptionsRunning;
   playing = false;
 
   reproductionPlaces:ReproductionPlace[];
@@ -184,12 +184,26 @@ export class MapBoxComponent implements OnInit, OnDestroy {
       this.coordinates = this.migrationRoutes.turtle.data.geometry.coordinates;
       this.markerRouteData.class = 'turtle';
     }
-
+    this.mapOptionsRunning = this.mapOptions;
     this.updateMarkerData(0);
+  }
 
+  stopMigrationRoute() {
+    this.mapOptionsRunning = null;
   }
 
   updateMarkerData(i) {
+
+    if (this.mapOptionsRunning != this.mapOptions) {
+      this.playing = false;
+      this.markerRouteData = {
+        longitude: null,
+        latitude: null,
+        class: null
+      };
+
+      return;
+    }
 
     let lon = this.coordinates[i][0];
     let lat = this.coordinates[i][1];
@@ -204,6 +218,11 @@ export class MapBoxComponent implements OnInit, OnDestroy {
       setTimeout(() => this.updateMarkerData(i), 1000);
     } else {
       this.playing = false;
+      this.markerRouteData = {
+        longitude: null,
+        latitude: null,
+        class: null
+      };
     }
   }
 

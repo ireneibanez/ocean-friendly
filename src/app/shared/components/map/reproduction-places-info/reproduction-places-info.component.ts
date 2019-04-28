@@ -3,7 +3,6 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-reproduction-places-info',
   templateUrl: './reproduction-places-info.component.html',
