@@ -41,6 +41,7 @@ import { LoginGuard } from '../app/guards/login.guard';
 import { SppPipe } from './pipes/spp.pipe';
 import { StatusPipe } from './pipes/status.pipe';
 import { RouterModule } from '@angular/router';
+import { DialogMessageComponent } from './shared/components/dialog-message/dialog-message.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { RouterModule } from '@angular/router';
     ReproductionPlacesInfoComponent,
     UserPanelComponent,
     SppPipe,
-    StatusPipe
+    StatusPipe,
+    DialogMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +100,7 @@ import { RouterModule } from '@angular/router';
     FormLoginComponent,
     SppInfoComponent,
     ReproductionPlacesInfoComponent,
+    DialogMessageComponent
   ],
 
 })

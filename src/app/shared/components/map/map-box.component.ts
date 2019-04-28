@@ -11,6 +11,7 @@ import { Marker } from 'src/app/model/marker.model';
 import { ReproductionPlace } from 'src/app/model/reproduction-place.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/model/user.model';
+import { DialogMessageComponent } from '../dialog-message/dialog-message.component';
 
 
 @Component({
@@ -96,7 +97,9 @@ export class MapBoxComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(
       (data: Sigthing) => {
         this.sightingService.createSighting(data).subscribe(()=>{
-          console.log('se ha creado correctamente');
+          const dialogConfig = new MatDialogConfig();
+          dialogConfig.data = 'Su avistamiento se ha registrado correctamente'
+          this.dialog.open(DialogMessageComponent, dialogConfig);
         });
       }
     );

@@ -1,11 +1,6 @@
 <form action="post" class="form" [formGroup]="form" (ngSubmit)="onSave()">
     <button mat-dialog-close type="button" class="btn-close">&times;</button>
     <h1>Regístrate</h1>
-    <!-- <div class="form__user-name">
-        <label for="name">Nombre de usuario</label>
-        <input type="text" name="name" placeholder="" formControlName="name" id="name">
-        <span *ngIf="form?.controls.name.errors?.required">Campo requerido</span>
-    </div> -->
     <div class="form__email">
         <label for="email">E-mail</label>
         <input type="text" name="email" placeholder="" formControlName="email" id="email">
