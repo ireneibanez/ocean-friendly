@@ -24,9 +24,11 @@
         'tuna-star': marker.type === 'individuals' && marker.spp === 'tuna' && mapOptions.mySpecies && userLogged && userLogged.id === marker.user,
         'turtle': marker.type === 'individuals' && marker.spp === 'turtle',
         'whale': marker.type === 'individuals' && marker.spp === 'whale',
-        'tuna': marker.type === 'individuals' && marker.spp === 'tuna'
+        'tuna': marker.type === 'individuals' && marker.spp === 'tuna',
+        'turtle-dead': marker.spp === 'turtle' && marker.status === 'dead',
+        'whale-dead': marker.spp === 'whale' && marker.status === 'dead',
+        'tuna-dead': marker.spp === 'tuna' && marker.status === 'dead'
       }"
-      data-1=""
       class="marker {{ marker.class }}" (click)="openModal(marker)">
           <div class="tooltip-text" *ngIf="marker.name && marker.name.length > 0">
             {{ marker.name | titlecase }}
@@ -142,7 +144,7 @@
                 <span class="legend-title">Mis avistamientos</span>
             </div>
             <div class="icons-container">
-              <img src="/assets/images/icons/death/001-grave.svg" alt="Imagen tumba" class="map-legend__death">
+              <img src="/assets/images/icons/death/007-craneo-2.svg" alt="Imagen cráneo" class="map-legend__death">
                 <span class="legend-title">Especies sin vida</span>
             </div>
         </div>

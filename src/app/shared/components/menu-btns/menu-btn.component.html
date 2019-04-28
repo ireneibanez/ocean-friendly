@@ -46,6 +46,11 @@
         <label for="reproduction-switch"></label>
         <span class="switch-title">Zonas de reproducción</span>
       </div>
+      <div class="switch-container">
+        <input type="checkbox" id="death-switch" [(ngModel)]="death" (change)="handleChange()">
+        <label for="death-switch"></label>
+        <span class="switch-title">Muertes</span>
+      </div>
     </div>
     <div class="map-options-menu__divider map-options-menu__divider--top-changed">
       <p class="map-options-title">Rutas Migratorias {{migrationRoutes}}</p>

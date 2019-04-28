@@ -11,7 +11,7 @@ export class AuthService {
 
   user: any;
   private userLoggedSubject: Subject<User> = new Subject<User>();
-  public userLoggedObservable: Observable<User> = this.userLoggedSubject.asObservable()
+  public userLoggedObservable: Observable<User> = this.userLoggedSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 

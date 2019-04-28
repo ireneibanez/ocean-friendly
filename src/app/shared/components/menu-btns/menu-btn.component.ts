@@ -1,16 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user.model';
-import { SightingService } from '../../../services/sighting.service';
-
 
 @Component({
   selector: 'app-menu-btn',
   templateUrl: './menu-btn.component.html',
   styleUrls: ['./menu-btn.component.scss']
 })
-export class MenuBtnComponent implements OnInit  {
+export class MenuBtnComponent implements OnInit, OnDestroy  {
 
   @Output() mapOptionsEmitter = new EventEmitter();
   status: boolean = false;
@@ -25,6 +23,7 @@ export class MenuBtnComponent implements OnInit  {
   reproductionPlaces: boolean;
   individuals: boolean;
   migrationRoutes: string;
+  death: boolean;
 
   userLogged: User;
   private userLoggedSubscription: Subscription;
@@ -33,7 +32,10 @@ export class MenuBtnComponent implements OnInit  {
 
   ngOnInit() {
     this.initValues();
-    this.userLogged = this.authService.getUserLogged();
+    this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe((userLogged: User) => {
+      this.userLogged = userLogged;
+    });
+
     this.sendMapOptions();
   }
 
@@ -59,6 +61,7 @@ export class MenuBtnComponent implements OnInit  {
     this.tunaMigrationSwitch = false;
     this.whaleMigrationSwitch = false;
     this.turtleMigrationSwitch = false;
+    this.death = false;
   }
 
   sendMapOptions() {
@@ -71,11 +74,16 @@ export class MenuBtnComponent implements OnInit  {
       turtle: this.turtle,
       mySpecies: this.mySpecies,
       individuals: this.individuals,
-      reproductionPlaces: this.reproductionPlaces
+      reproductionPlaces: this.reproductionPlaces,
+      death: this.death
     };
 
     this.mapOptionsEmitter.emit(config);
   }
 
-
+  ngOnDestroy() {
+    if (this.userLoggedSubscription) {
+      this.userLoggedSubscription.unsubscribe();
+    }
+  }
 }

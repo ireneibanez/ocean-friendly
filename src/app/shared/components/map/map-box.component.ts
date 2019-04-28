@@ -10,6 +10,7 @@ import { Sigthing } from 'src/app/model/sigthing.model';
 import { Marker } from 'src/app/model/marker.model';
 import { ReproductionPlace } from 'src/app/model/reproduction-place.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/model/user.model';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class MapBoxComponent implements OnInit, OnDestroy {
     turtle: false,
     mySpecies: false,
     individuals: false,
-    reproductionPlaces: false
+    reproductionPlaces: false,
+    death: false
   };
 
   playing = false;
@@ -50,22 +52,22 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   migrationRoutes;
   initError: string;
-  //TODO: ver para que se usa esto
   turtleLayer = null;
   tunaLayer= null;
-  userLogged;
+  userLogged: User;
 
   private markersSubscription: Subscription;
   private repPlacesSubscription: Subscription;
+  private userLoggedSubscription: Subscription;
 
-  constructor(public dialog: MatDialog, private sightingService: SightingService, private authService: AuthService) {
-
-    console.log(this.userLogged);
-  }
+  constructor(public dialog: MatDialog, private sightingService: SightingService, private authService: AuthService) { }
 
   ngOnInit() {
 
-    this.userLogged = this.authService.getUserLogged();
+    this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe((userLogged: User) => {
+      this.userLogged = userLogged;
+    });
+
     this.migrationRoutes = this.sightingService.getMigrationRoutes();
 
     this.markersSubscription = this.sightingService.getSightings().subscribe(
@@ -133,7 +135,7 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   private applyFilters(markers: Marker[]): Marker[] {
 
-    return markers.filter((marker: Marker) => {
+    const markersFiltered =  markers.filter((marker: Marker) => {
 
       if (!this.mapOptions.tuna && marker.spp === 'tuna') {
         return false;
@@ -155,9 +157,15 @@ export class MapBoxComponent implements OnInit, OnDestroy {
         return false;
       }
 
+      if (!this.mapOptions.death && marker.status === 'dead'){
+        return false;
+      }
+
       return true;
 
     });
+
+    return markersFiltered;
   }
 
   playMigrationRoute() {
@@ -205,6 +213,9 @@ export class MapBoxComponent implements OnInit, OnDestroy {
     }
     if (this.repPlacesSubscription) {
       this.repPlacesSubscription.unsubscribe();
+    }
+    if (this.userLoggedSubscription) {
+      this.userLoggedSubscription.unsubscribe();
     }
   }
 }

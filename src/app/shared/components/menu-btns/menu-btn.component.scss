@@ -93,7 +93,7 @@
     left: 0;
     bottom: 0;
     border-radius: 0 12px 0 0;
-    padding: 32px;
+    padding: 24px;
     z-index: map-get($z-index, 'mobile-menu');
     background-color: var(--color-purple-3);
     transform: translate3d(-100%, 0, 0);
@@ -104,7 +104,7 @@
         button {
           position: absolute;
           top: 16px;
-          left: 230px;
+          left: 210px;
           height: 50px;
           width: 50px;
           background-color: transparent;

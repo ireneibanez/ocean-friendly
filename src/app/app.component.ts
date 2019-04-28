@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    if (this.authService.getUserLogged && this.authService.token) {
+    if (!this.authService.getUserLogged() && this.authService.token) {
       try {
         this.authService.getUser();
       } catch (err) {
