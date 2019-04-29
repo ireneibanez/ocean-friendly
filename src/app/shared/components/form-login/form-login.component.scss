@@ -25,6 +25,14 @@
       justify-content: flex-end;
   }
 
+  .error {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    color: var(--color-red);
+    font-size: 14px;
+    font-family: var(--ff-primary);
+  }
+
   &__user-email{
       grid-column: 1 / 3;
       grid-row: 2 / 3;

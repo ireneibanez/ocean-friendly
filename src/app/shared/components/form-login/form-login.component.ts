@@ -31,6 +31,7 @@ export class FormLoginComponent implements OnInit {
 
   onSave() {
     if (this.form.valid) {
+      this.showError = false;
       this.authService.login(this.form.value).then(
         response => {
           console.log('login OK', response);

@@ -102,6 +102,14 @@ export class MapBoxComponent implements OnInit, OnDestroy {
           const dialogConfig = new MatDialogConfig();
           dialogConfig.data = 'Su avistamiento se ha registrado correctamente'
           this.dialog.open(DialogMessageComponent, dialogConfig);
+          this.markersSubscription = this.sightingService.getSightings().subscribe(
+            (markers: Marker[]) => {
+              this.markers = this.applyFilters(markers);
+            },
+            (error: HttpErrorResponse) => {
+              this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
+            }
+          );
         });
       }
     );

@@ -57,10 +57,14 @@
           class="map"
           id="map-form"
           [style]="'mapbox://styles/corneto/cjscaqrr005ow1fo5tsjile1h'"
-          [zoom]="[3.5]"
+          [zoom]="[3.0]"
           [center]="[-1.129331, 37.987391]"
           (click) = "getCoordinates($event)"
         >
+        <mgl-control
+        mglNavigation
+        [position]="'top-left'"
+        ></mgl-control>
         </mgl-map>
       </div>
 

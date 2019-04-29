@@ -1,6 +1,10 @@
 <form action="post" class="form-login" [formGroup]="form" (ngSubmit)="onSave()">
   <button mat-dialog-close type="button" class="btn-close">&times;</button>
 
+  <div *ngIf="showError" class="error">
+    Su usuario y contraseña no son válidos
+  </div>
+
   <div class="form-login__user-email">
       <label for="email">E-mail</label>
       <input type="text" name="email" placeholder="Introduzca su email" formControlName="email" id="email-login">
