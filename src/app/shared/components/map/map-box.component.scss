@@ -26,13 +26,16 @@
   }
   .turtle-love {
       background-image: url('/assets/images/icons/turtle-love.svg');
-      background-size: 75%;
+      background-size: 80%;
   }
   .tuna-love {
       background-image: url('/assets/images/icons/tuna-love.svg');
+      width: 85px;
+      height: 60px;
   }
   .whale-love {
       background-image: url('/assets/images/icons/whale-love.svg');
+      width: 105px;
   }
   .turtle-star {
     background-image: url('/assets/images/icons/turtle-star.svg');
@@ -99,6 +102,23 @@
     border-color: var(--color-purple-3) transparent transparent transparent;
     filter: drop-shadow(0 1px 0 var(--color-purple-3));
   }
+}
+
+.init-turtle-marker, .final-turtle-marker, .init-whale-marker, .final-whale-marker, .init-tuna-marker, .final-tuna-marker {
+  width: 20px;
+  padding-bottom: 8px;
+  font-family: var(--ff-primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+.init-turtle-marker, .final-turtle-marker {
+  color: #17A589;
+}
+.init-whale-marker, .final-whale-marker {
+  color: #3498DB;
+}
+.init-tuna-marker, .final-tuna-marker {
+  color: #C0392B;
 }
 
 

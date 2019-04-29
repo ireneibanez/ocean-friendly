@@ -71,13 +71,31 @@
         'line-width': 4
       }"
       >
-    </mgl-layer>
+        <mgl-marker
+        [lngLat]="[19.384001, 38.796346]"
+        >
+          <div
+          class="init-turtle-marker"
+          >
+	          Inicio
+          </div>
+        </mgl-marker>
+        <mgl-marker
+        [lngLat]="[-25.059269, 13.658605]"
+        >
+          <div
+          class="final-turtle-marker"
+          >
+	          Fin
+          </div>
+        </mgl-marker>
+      </mgl-layer>
     </div>
 
 
     <div *ngIf="mapOptions.whaleMigration === true">
       <mgl-layer
-      [id]="id"
+      [id]="idw"
       type="line"
       [source]="migrationRoutes.whale"
       [layout]="{
@@ -89,6 +107,24 @@
         'line-width': 4
       }"
       >
+        <mgl-marker
+        [lngLat]="[-77.811306, 22.247000]"
+        >
+          <div
+          class="init-whale-marker"
+          >
+            Inicio
+          </div>
+        </mgl-marker>
+        <mgl-marker
+        [lngLat]="[-33.342915, 66.191820]"
+        >
+          <div
+          class="final-whale-marker"
+          >
+            Fin
+          </div>
+        </mgl-marker>
       </mgl-layer>
     </div>
 
@@ -106,6 +142,24 @@
         'line-width': 4
       }"
       >
+        <mgl-marker
+        [lngLat]="[29.139415, 37.663470]"
+        >
+          <div
+          class="init-tuna-marker"
+          >
+            Inicio
+          </div>
+        </mgl-marker>
+        <mgl-marker
+        [lngLat]="[-95.604690, 25.317105]"
+        >
+          <div
+          class="final-tuna-marker"
+          >
+            Fin
+          </div>
+        </mgl-marker>
       </mgl-layer>
     </div>
 
@@ -114,9 +168,7 @@
 
   <app-menu-btn (mapOptionsEmitter)="updateMapOptions($event)"></app-menu-btn>
 
-  <button *ngIf="userLogged" type="button" class="btn-find" (click)="openFormAnimals()">¿Lo has visto tú?</button>
-  <!-- <button *ngIf="!userLogged" type="button" class="btn-find" (click)="openFormAnimals()">NOT {{ userLogged.id }}</button>
-  <button *ngIf="userLogged" type="button" class="btn-find" (click)="openFormAnimals()">{{ userLogged.id }}</button> -->
+  <button *ngIf="userLogged" type="button" class="btn-find" (click)="openFormAnimals()">¿Lo has visto tú? {{ id }}</button>
 
   <div class="map-legend">
     <div class="map-legend__container">

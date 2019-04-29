@@ -32,6 +32,7 @@ export class MenuBtnComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.initValues();
+    this.userLogged = this.authService.getUserLogged();
     this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe((userLogged: User) => {
       this.userLogged = userLogged;
     });
@@ -52,11 +53,11 @@ export class MenuBtnComponent implements OnInit, OnDestroy  {
   }
 
   initValues() {
-    this.tuna = true;
-    this.whale = true;
-    this.turtle = true;
-    this.individuals = true;
-    this.reproductionPlaces = true;
+    this.tuna = false;
+    this.whale = false;
+    this.turtle = false;
+    this.individuals = false;
+    this.reproductionPlaces = false;
     this.mySpecies = false;
     this.tunaMigrationSwitch = false;
     this.whaleMigrationSwitch = false;

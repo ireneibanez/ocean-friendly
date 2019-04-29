@@ -49,7 +49,7 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   interval = null;
   coordinates = null;
   coordinatesPosition = null;
-  id = "hola"
+  id = "hola";
 
   migrationRoutes;
   initError: string;
@@ -64,6 +64,8 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   constructor(public dialog: MatDialog, private sightingService: SightingService, private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.userLogged = this.authService.getUserLogged();
 
     this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe((userLogged: User) => {
       this.userLogged = userLogged;

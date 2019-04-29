@@ -1,0 +1,15 @@
+@import "../partials/mixins";
+@import "../partials/variables";
+
+.mat-dialog-container {
+  h1 {
+    @include titles;
+    font-family: var(--ff-primary);
+    color: var(--color-red);
+  }
+  span {
+    font-family: var(--ff-primary);
+    font-size: 16px;
+    color: var(--color-graphite);
+  }
+}
