@@ -121,8 +121,17 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
 
   updateMapOptions($event) {
-    this.id = `boream-${Date.now()}`;
-    this.mapOptions = $event;
+
+    const newMapOptions = $event;
+
+    if (this.mapOptions.whaleMigration !== newMapOptions.whaleMigration ||
+      this.mapOptions.tunaMigration !== newMapOptions.tunaMigration ||
+      this.mapOptions.turtleMigration !== newMapOptions.turtleMigration) {
+      this.id = `boream-${Date.now()}`;
+    }
+
+    this.mapOptions = newMapOptions;
+
     this.markersSubscription = this.sightingService.getSightings().subscribe(
       (markers: Marker[]) => {
         this.markers = this.applyFilters(markers);
@@ -163,6 +172,10 @@ export class MapBoxComponent implements OnInit, OnDestroy {
       }
 
       if (!this.mapOptions.death && marker.status === 'dead'){
+        return false;
+      }
+
+      if(!this.mapOptions.individuals && this.mapOptions.mySpecies && marker.type === 'individuals' && this.userLogged && this.userLogged.id !== marker.user) {
         return false;
       }
 

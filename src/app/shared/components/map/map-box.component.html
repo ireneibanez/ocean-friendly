@@ -95,7 +95,7 @@
 
     <div *ngIf="mapOptions.whaleMigration === true">
       <mgl-layer
-      [id]="idw"
+      [id]="id"
       type="line"
       [source]="migrationRoutes.whale"
       [layout]="{
@@ -168,7 +168,7 @@
 
   <app-menu-btn (mapOptionsEmitter)="updateMapOptions($event)"></app-menu-btn>
 
-  <button *ngIf="userLogged" type="button" class="btn-find" (click)="openFormAnimals()">¿Lo has visto tú? {{ id }}</button>
+  <button *ngIf="userLogged" type="button" class="btn-find" (click)="openFormAnimals()">¿Lo has visto tú?</button>
 
   <div class="map-legend">
     <div class="map-legend__container">
@@ -196,7 +196,7 @@
                 <span class="legend-title">Mis avistamientos</span>
             </div>
             <div class="icons-container">
-              <img src="/assets/images/icons/death/007-craneo-2.svg" alt="Imagen cráneo" class="map-legend__death">
+              <img src="/assets/images/icons/death/012-skull.svg" alt="Imagen cráneo" class="map-legend__death">
                 <span class="legend-title">Especies sin vida</span>
             </div>
         </div>
