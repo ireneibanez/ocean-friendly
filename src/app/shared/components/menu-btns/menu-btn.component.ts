@@ -44,7 +44,7 @@ export class MenuBtnComponent implements OnInit, OnDestroy  {
     this.status = !this.status;
   }
 
-  handleChange($event) {
+  handleChange() {
     this.sendMapOptions();
   }
 
