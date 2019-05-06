@@ -50,6 +50,7 @@
   label {
       @include titles;
       margin-bottom: 10px;
+      margin-top: 8px;
   }
   input {
       @include inputs;
@@ -64,13 +65,28 @@
       justify-content: center;
   }
   .btn-submit {
+      margin-top: 8px;
       width: 30%;
       @include button;
       background-color: var(--color-purple-2);
       &:hover {
-          background-color: var(--color-purple-base);
-          color: var(--color-purple-base);
-          border:1px solid var(--color-purple-2);
+        background-color: var(--color-purple-1);
+        color: var(--color-purple-3);
+        border:1px solid var(--color-purple-3);
       }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .form-login {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    .btn-close {
+      @include btn-close;
+      position: fixed;
+      top: 8px;
+      right: 8px;
+    }
   }
 }

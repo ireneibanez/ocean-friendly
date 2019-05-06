@@ -53,10 +53,10 @@ export class MenuBtnComponent implements OnInit, OnDestroy  {
   }
 
   initValues() {
-    this.tuna = false;
-    this.whale = false;
-    this.turtle = false;
-    this.individuals = false;
+    this.tuna = true;
+    this.whale = true;
+    this.turtle = true;
+    this.individuals = true;
     this.reproductionPlaces = false;
     this.mySpecies = false;
     this.tunaMigrationSwitch = false;

@@ -43,6 +43,7 @@ import { StatusPipe } from './pipes/status.pipe';
 import { RouterModule } from '@angular/router';
 import { DialogMessageComponent } from './shared/components/dialog-message/dialog-message.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +101,7 @@ import { DialogMessageComponent } from './shared/components/dialog-message/dialo
     FormLoginComponent,
     SppInfoComponent,
     ReproductionPlacesInfoComponent,
-    DialogMessageComponent
+    DialogMessageComponent,
   ],
 
 })

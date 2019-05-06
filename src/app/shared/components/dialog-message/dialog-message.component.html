@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>Atención</h1>
+<div class="titles">
+  <h1 mat-dialog-title>Atención</h1>
+  <button class="cancel-btn" [mat-dialog-close]="false">&times;</button>
+</div>
 <div mat-dialog-content>
   <span>{{ message }}</span>
+  <button class="confirm-btn" [mat-dialog-close]="true">OK</button>
 </div>
+

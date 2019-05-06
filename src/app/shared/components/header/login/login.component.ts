@@ -5,6 +5,7 @@ import { FormRegisterComponent } from '../../form-register/form-register.compone
 import { User } from 'src/app/model/user.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   userLogged: User;
   private userLoggedSubscription: Subscription;
 
-  constructor(public dialog: MatDialog, private authService: AuthService) {}
+  constructor(public dialog: MatDialog, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.userLoggedSubscription = this.authService.userLoggedObservable.subscribe(
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   closeSession() {
     this.authService.token = '';
     this.userLogged = null;
+    this.router.navigate(['/home']);
   }
 }
 

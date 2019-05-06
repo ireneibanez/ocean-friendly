@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component ({
   selector: 'app-form-login',
@@ -15,7 +16,7 @@ export class FormLoginComponent implements OnInit {
   form: FormGroup;
   showError: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<FormLoginComponent>, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<FormLoginComponent>, private authService: AuthService, private router: Router) { }
 
   initForm() {
 
@@ -36,6 +37,7 @@ export class FormLoginComponent implements OnInit {
         response => {
           console.log('login OK', response);
           this.dialogRef.close(response);
+          this.router.navigateByUrl('/panel');
         },
         err => {
           console.log('error en el login', err);

@@ -179,7 +179,7 @@
     background-color: var(--color-purple-3);
     display: flex;
     flex-direction: column;
-    // align-items: flex-start;
+    overflow-y: auto;
     padding-top: 1.875rem;
     transform: translate3d(0, 100%, 0);
     transition: transform .25s ease-in-out;
@@ -190,39 +190,41 @@
         flex-direction: column;
         padding: 40px;
         button {
-          position: absolute;
-          top: 72px;
-          right: 24px;;
-          height: 50px;
-          width: 50px;
+          position: fixed;
+          top: 64px;
+          right: 32px;;
+          height: 30px;
+          width: 30px;
           background-color: transparent;
           border: 0;
           .map-options-icon-close{
            display: none;
           }
           .map-options-icon-down {
-            height: 50px;
-            width: 50px;
+            height: 30px;
+            width: 30px;
             cursor: pointer;
+            position: fixed;
           }
         }
         .map-options-menu__divider {
             display: flex;
             flex-direction: column;
-            margin-top: 25px;
+            margin-top: 24px;
             .map-options-title {
                 display: block;
-                margin-bottom: 50px;
+                margin-bottom: 48px;
+                margin-top: 24px;
                 @include switch-title;
                 font-size: var(--fs-big);
                 font-weight: 600;
                 color: var(--color-white);
             }
-            &--top-separate {
-              padding-top: 25px;
-            }
+            // &--top-separate {
+            //   padding-top: 16px;
+            // }
             &--top-changed {
-              margin-top: 40px;
+              margin-top: 24px;
               padding-top: 24px;
               border-top: 1px solid var(--color-white);
             }

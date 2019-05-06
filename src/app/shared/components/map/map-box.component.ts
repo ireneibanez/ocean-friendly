@@ -37,8 +37,8 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   mapOptionsRunning;
   playing = false;
 
-  reproductionPlaces:ReproductionPlace[];
-  markers:Marker[];
+  reproductionPlaces: ReproductionPlace[];
+  markers: Marker[];
   markerRoute = false;
   markerRouteData = {
     longitude: null,
@@ -54,7 +54,7 @@ export class MapBoxComponent implements OnInit, OnDestroy {
   migrationRoutes;
   initError: string;
   turtleLayer = null;
-  tunaLayer= null;
+  tunaLayer = null;
   userLogged: User;
 
   private markersSubscription: Subscription;
@@ -98,26 +98,29 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(
       (data: Sigthing) => {
-        this.sightingService.createSighting(data).subscribe(()=>{
-          const dialogConfig = new MatDialogConfig();
-          dialogConfig.data = 'Su avistamiento se ha registrado correctamente'
-          this.dialog.open(DialogMessageComponent, dialogConfig);
-          this.markersSubscription = this.sightingService.getSightings().subscribe(
-            (markers: Marker[]) => {
-              this.markers = this.applyFilters(markers);
-            },
-            (error: HttpErrorResponse) => {
-              this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
-            }
-          );
-        });
+        if (data) {
+          this.sightingService.createSighting(data).subscribe(() => {
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.data = 'Su avistamiento se ha registrado correctamente';
+            dialogConfig.disableClose = true;
+            this.dialog.open(DialogMessageComponent, dialogConfig);
+            this.markersSubscription = this.sightingService.getSightings().subscribe(
+              (markers: Marker[]) => {
+                this.markers = this.applyFilters(markers);
+              },
+              (error: HttpErrorResponse) => {
+                this.initError = 'Your markers cannont be loaded. Please try again after few minutes.';
+              }
+            );
+          });
+        }
       }
     );
   }
 
   openModal(marker) {
     const dialogConfig = new MatDialogConfig();
-
+    dialogConfig.disableClose = true;
     dialogConfig.data = marker;
 
     if (marker.type === 'love') {
@@ -157,7 +160,7 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
   private applyFilters(markers: Marker[]): Marker[] {
 
-    const markersFiltered =  markers.filter((marker: Marker) => {
+    const markersFiltered = markers.filter((marker: Marker) => {
 
       if (!this.mapOptions.tuna && marker.spp === 'tuna') {
         return false;
@@ -179,11 +182,11 @@ export class MapBoxComponent implements OnInit, OnDestroy {
         return false;
       }
 
-      if (!this.mapOptions.death && marker.status === 'dead'){
+      if (!this.mapOptions.death && marker.status === 'dead') {
         return false;
       }
 
-      if(!this.mapOptions.individuals && this.mapOptions.mySpecies && marker.type === 'individuals' && this.userLogged && this.userLogged.id !== marker.user) {
+      if (!this.mapOptions.individuals && this.mapOptions.mySpecies && marker.type === 'individuals' && this.userLogged && this.userLogged.id !== marker.user) {
         return false;
       }
 
@@ -233,13 +236,13 @@ export class MapBoxComponent implements OnInit, OnDestroy {
 
     let lon = this.coordinates[i][0];
     let lat = this.coordinates[i][1];
-    if( i > 0) {
+    if (i > 0) {
       this.playing = true;
     }
 
     this.markerRouteData.latitude = lat;
     this.markerRouteData.longitude = lon;
-    i = i+1;
+    i = i + 1;
     if (i < this.coordinates.length) {
       setTimeout(() => this.updateMarkerData(i), 1000);
     } else {

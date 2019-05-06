@@ -30,12 +30,12 @@ export class FormRegisterComponent implements OnInit {
 
   onSave() {
     if (this.form.valid) {
-      console.log('onSave form ok');
       this.authService.registerUser(this.form.value).then(
         response => {
           this.dialogRef.close();
           const dialogConfig = new MatDialogConfig();
-          dialogConfig.data = 'Se ha registrado correctamente, ya puede iniciar sesión.'
+          dialogConfig.data = 'Se ha registrado correctamente, ya puede iniciar sesión.';
+          dialogConfig.disableClose = true;
           this.dialog.open(DialogMessageComponent, dialogConfig);
         },
         err => {
