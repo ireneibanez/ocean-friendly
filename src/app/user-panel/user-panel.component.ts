@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { FormAnimalsComponent } from '../shared/components/form-animals/form-animals.component';
-import { DataSource } from '@angular/cdk/table';
 import { SightingService } from '../services/sighting.service';
 import { Subscription } from 'rxjs';
 import { Sigthing } from '../model/sigthing.model';
+import { DialogMessageComponent } from '../shared/components/dialog-message/dialog-message.component';
+
 
 @Component({
   selector: 'app-user-panel',
@@ -21,6 +22,7 @@ export class UserPanelComponent implements OnInit, OnDestroy {
   latitude: object;
   longitude: object;
 
+
   displayedColumns: any[] = ['spp', 'name', 'number', 'status', 'date', 'latitude', 'longitude'];
   dataSource: any[];
   mySightings: Sigthing[];
@@ -36,17 +38,37 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     });
   }
 
+
   delete(data){
-    this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
-      this.getMySightings();
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = '¿Está seguro de que desea borrar el registro seleccionado?';
+    dialogConfig.disableClose = true;
+    const dialogRef = this.dialog.open(DialogMessageComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe ((res)=> {
+      if(res) {
+        this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
+          this.getMySightings();
+        });
+      }
+    })
+
+    // let message = window.confirm('¿Está seguro de que desea borrar el registro seleccionado?');
+    //   if (message === true) {
+    //     this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
+    //       this.getMySightings();
+    //     });
+    //   } else {
+    //     return;
+    //   }
+
+
   }
 
   openFormAnimals(sighting: Sigthing) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = sighting;
+    dialogConfig.disableClose = true;
     const dialogRef = this.dialog.open(FormAnimalsComponent, dialogConfig);
-
     dialogRef.afterClosed().subscribe(
       (sightingUpdated: Sigthing) => {
         sightingUpdated._id = sighting._id;
