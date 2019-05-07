@@ -1,5 +1,6 @@
 
 <table role="table">
+    <caption>Mis avistamientos</caption>
     <thead role="rowgroup">
       <tr role="row" class="header-row">
         <th role="columnheader">Especie</th>
@@ -14,7 +15,6 @@
     </thead>
     <tbody role="rowgroup">
       <tr role="row" *ngFor="let data of mySightings">
-        <!-- <td role="cell" >{{data._id }}</td> -->
         <td role="cell" >{{data.spp | spp}}</td>
         <td role="cell">{{data.name}}</td>
         <td role="cell">{{data.numAnimals}}</td>

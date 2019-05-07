@@ -3,16 +3,30 @@
 
 
 @media (min-width: 761px) {
+
+  body {
+    overflow: scroll;
+  }
+
   table {
     @include titles;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: 100px 16px 24px 16px;
+    margin: 150px 16px 24px 16px;
     min-width: 750px;
     padding: 24px;
     transform: translate(-50%, -50%);
-    margin-top: 50px;
+    overflow: scroll;
+
+    caption {
+      font-size: var(--fs-huge);
+      color: var(--color-graphite);
+      font-weight: 600;
+      display: table-caption;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
     tr > th {
       padding: 16px;
@@ -62,7 +76,15 @@
 
   table {
     @include titles;
-    margin: 88px 16px 0 16px;
+    margin: 100px 16px 0 16px;
+    caption {
+      font-size: var(--fs-medium);
+      color: var(--color-graphite);
+      font-weight: 600;
+      display: table-caption;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
 
   table, thead, tbody, th, td, tr {
@@ -101,7 +123,10 @@
     border: 0;
     border-bottom: 1px solid #eee;
     position: relative;
+    // padding: 2px;
     padding-left: 50%;
+    padding-bottom: 8px;
+    padding-top: 8px;
   }
 
   td:before {
@@ -110,6 +135,8 @@
     left: 6px;
     width: 45%;
     padding-right: 10px;
+    padding-bottom: 8px;
+    padding-top: 8px;
     white-space: nowrap;
     font-weight: 600;
   }

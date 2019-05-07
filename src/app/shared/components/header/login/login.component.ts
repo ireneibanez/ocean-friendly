@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   closeSession() {
     this.authService.token = '';
     this.userLogged = null;
-    this.router.navigate(['/home']);
+    window.location.reload();
   }
 }
 

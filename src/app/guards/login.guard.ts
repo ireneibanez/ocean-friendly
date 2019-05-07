@@ -19,7 +19,7 @@ export class LoginGuard implements CanActivate {
       return true;
     }
 
-    this.redirect('home');
+    this.redirect('/home');
     return false;
   }
 }
