@@ -8,7 +8,15 @@
   </button>
   <img src="../../../../../assets/images/logo.svg" alt="logo" class="logo">
   <nav class="navigation__navbar">
-    <button class="btn-close" (click)="toggleVisibilityMenuMobile()">&times;</button>  
+    <button class="btn-close" (click)="toggleVisibilityMenuMobile()">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 473.654 473.654" style="enable-background:new 0 0 473.654 473.654;" xml:space="preserve">
+        <circle style="fill: #FFFFFF" cx="236.827" cy="236.827" r="236.827"/>
+        <path style="fill:rgba(104, 126, 181, 1);;" d="M333.577,219.408c-35.885-35.885-71.77-71.766-107.659-107.651
+          c-25.564-25.56-65.084,14.259-39.456,39.883c29.236,29.236,58.479,58.476,87.719,87.712c-29.315,29.307-58.625,58.618-87.929,87.925
+          c-25.564,25.56,14.255,65.08,39.879,39.456c35.889-35.885,71.774-71.77,107.659-107.655
+          C344.635,248.237,344.34,230.171,333.577,219.408z"/>
+      </svg>
+    </button>
     <ul class="navigation__list list">
         <li class="list__item"><a routerLink="/home" (click)="toggleVisibilityMenuMobile()">Inicio</a></li>
         <li class="list__item"><a routerLink="/dashboard" (click)="toggleVisibilityMenuMobile()">Evolución de las especies</a></li>

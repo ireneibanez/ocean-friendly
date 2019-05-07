@@ -78,8 +78,15 @@
     transition: transform .25s ease-in-out;
     .btn-close {
       @include btn-close;
-      top: 20px;
-      right: 20px;
+      top: 30px;
+      right: 30px;
+      background-color: transparent;
+      color: transparent;
+      border: 0;
+      svg {
+        width: 30px;
+        height: 30px;;
+      }
     }
   }
 
