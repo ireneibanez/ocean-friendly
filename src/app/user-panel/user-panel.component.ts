@@ -46,22 +46,11 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DialogMessageComponent, dialogConfig);
     dialogRef.afterClosed().subscribe ((res)=> {
       if(res) {
-        this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
+        this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe(() => {
           this.getMySightings();
         });
       }
     })
-
-    // let message = window.confirm('¿Está seguro de que desea borrar el registro seleccionado?');
-    //   if (message === true) {
-    //     this.deleteSightingSubscription = this.sightingService.deleteSighting(data._id).subscribe( () => {
-    //       this.getMySightings();
-    //     });
-    //   } else {
-    //     return;
-    //   }
-
-
   }
 
   openFormAnimals(sighting: Sigthing) {
@@ -78,7 +67,12 @@ export class UserPanelComponent implements OnInit, OnDestroy {
   }
 
   edit (sighting: Sigthing) {
+
     this.editSightingSubscription = this.sightingService.editSighting(sighting).subscribe(()=>{
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = 'Su avistamiento se ha editado correctamente';
+      dialogConfig.disableClose = true;
+      this.dialog.open(DialogMessageComponent, dialogConfig);
       this.getMySightings();
     });
   }
