@@ -190,7 +190,7 @@
   .map-legend {
     @include map-options;
     width: 100%;
-    padding: 8px;
+    padding: 4px;
     background-color: var(--color-blue-1);
     bottom: 50px;
     right: 0;
@@ -228,7 +228,7 @@
 
     .migration-player {
     position: absolute;
-    bottom: 20%;
+    bottom: 30%;
     left: 25%;
     right: 25%;
     height: 52px;
@@ -244,7 +244,6 @@
       .icon-player {
         width: 40px;
         fill: var(--color-white);
-        color: var(--color-white);
       }
     }
   }
