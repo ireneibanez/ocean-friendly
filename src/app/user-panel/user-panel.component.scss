@@ -4,16 +4,12 @@
 
 @media (min-width: 761px) {
 
-  body {
-    overflow: scroll;
-  }
-
   table {
     @include titles;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: 0 16px 24px 0;
+    margin: 100px 16px 24px 0;
     min-width: 750px;
     padding: 24px;
     transform: translate(-50%, -50%);
@@ -26,6 +22,7 @@
       display: table-caption;
       text-align: center;
       margin-bottom: 20px;
+      margin-top: 20px;
     }
 
     tr > th {
